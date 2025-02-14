@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type = "text/css">
+ .t2{font-size : 30pt;}
+ #t{background-color:pink; color : lightblue;}
+ div {border : pink solid 3px; width : 300px; height : 300px;}
+
+</style>
+<script type = "text/javascript" src = "jQuery.js"></script>
+<script type = "text/javascript">
+$(function(){
+	
+	$("#b1").click(function()
+			{
+		alert('asdf');
+		$("a").text("유튜브로");
+		
+		//text()의 소괄호 안에 값을 넣지 않으면
+		//기존의 값을 가져오게 됨
+		
+		let t = $("a").text();
+
+		
+		//$("a").html("<b>유튜브로</b>");
+//		$("a").text("<b>유튜브로</b>");
+//        <b>를 텍스트로 인식!
+		
+		//.html() 사용하면 새로운 html요소로 변경할 수 있음
+)
+		
+#("#b2").click(()=>{
+alert("asdf");	
+});
+
+
+
+		
+	});
+	
+
+
+
+});
+
+
+
+
+</script>
+</head>
+<body>
+
+<a href = "https://www.naver.com" class = "t2">네이버로</a>
+<hr>
+<button id = "b1">내용 수정</button> <p>
+<button id = "b2">속성 수정</button> <p>
+<button id = "b3">DOM객체 수정</button> <p>
+<button id = "b4">DOM객체 삭제</button> <p>
+<div>
+
+</div>
+
+</body>
+</html>

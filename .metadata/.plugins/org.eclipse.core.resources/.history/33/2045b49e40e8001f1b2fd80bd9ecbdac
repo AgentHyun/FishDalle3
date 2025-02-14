@@ -1,0 +1,20 @@
+package com.puft.feb112.calc;
+
+import javax.servlet.http.HttpServletRequest;
+
+public class CalcDAO {
+
+	private int allCalcCount; // 몇 번 계산했는지
+	
+	//요청파라미터명과 자바빈의 객체의 변수명이 같다면 자동 맵핑
+	public void calculate(CalcResult cr, HttpServletRequest req ) {
+		allCalcCount++;
+		System.out.println(allCalcCount);
+		int add = cr.getX() + cr.getY();
+		System.out.println(add);
+		
+		
+	}
+	
+	
+}

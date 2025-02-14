@@ -1,0 +1,34 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page session="false" %>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+<h1>	Hello world!  </h1>
+
+
+[JSP] - http://IP:Port/ProjectName/FileName
+[Spring] - https://IP:Port/top-level package의 마지막자리/FileName
+
+package명이 같으면 프로젝트가 달라도 주소가 같아질 수 있어서
+에러 발생할 확률이 높으니 top-level package는 이름이 중복되지 않도록
+주의해야 합니다.
+Spring 프로그램 실행은 프로젝트 자체를 선택 후
+ctrl + f11을 눌러서 Run on Server를 클릭하면 됩니다.
+
+
+Spring 이전에
+애플리케이션을 구현하기 위해서 EJB(Enterprise JavaBeans)를 사용했음
+EJB의 기술이 점점 발전하면서 성능이 그만큼 느려지게 되었고,
+기능을 추가할수록 더욱더 복잡해지게 되었는데
+개발자들은 'EJB' 사용 시절을 '겨울'에 빗대어서 표현했습니다.
+'겨울'이 끝나고 '봄'이 찾아왔다해서 Spring이라 이름짓게 되었음
+Spring이 등장하면서 Java의 문법을 사용해서 기능을 구현하자라는 것이 목표였고
+
+
+
+
+
+</body>
+</html>

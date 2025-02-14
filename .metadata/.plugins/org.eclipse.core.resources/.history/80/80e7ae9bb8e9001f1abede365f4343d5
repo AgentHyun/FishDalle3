@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type "text/css>
+h1 {
+
+color : red;
+transition : all 0.5s ease-out;
+
+}
+
+</style>
+<script type ="text/javascript" src ="jQuery.js"></script>
+<script type ="text/javascript">
+$(function(){
+	
+	 $("h3").click(()=>{
+			b = !b;
+			alert(b);
+		 });
+	
+});
+
+
+
+</script>
+
+
+</head>
+<body>
+
+
+<h1>점메추~~</h1>
+<hr>
+<button id = "btn1">btn1</button>
+<button id = "btn2">btn2</button>
+<hr>
+<input id = "i">
+<button id = "btn3">btn3</button>
+<button id = "btn4">btn4</button>
+
+
+
+
+</body>
+</html>

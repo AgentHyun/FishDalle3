@@ -1,0 +1,19 @@
+package com.puft.feb101.human;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import com.puft.feb101.dog.Dog;
+
+public class Human {
+    //기본형
+	private String name;
+	private int age;
+     
+	
+	private String[] nickname;
+	private ArrayList<String> friend;
+	private HashMap<String, Integer> family;
+	
+	private Dog pet;
+}

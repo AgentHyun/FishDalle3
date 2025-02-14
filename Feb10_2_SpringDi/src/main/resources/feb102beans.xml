@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/context
+	http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+<!-- 	<bean id="d" class="com.beaver.feb102.dog.Dog"></bean>
+	<bean id="d2" class="com.beaver.feb102.dog.Dog">
+		<property name="name" value="개님" />
+		<property name="age" value="40" />
+	</bean>
+	<bean id="d3" class="com.beaver.feb102.dog.Dog">
+		<constructor-arg value="개느님" />
+		<constructor-arg value="999" />
+	</bean>
+ -->	
+	<bean id="h1" class="com.beaver.feb102.human.Human">
+		<property name="name" value="김뜨또" />
+		<property name="age" value="200" />
+		<property name="nickname">
+			<list value-type="java.lang.String">
+				<value>비버</value>
+				<value>돼지</value>
+				<value>저스트뜨또</value>
+			</list>
+		</property>
+		<property name="friend">
+			<list value-type="java.lang.String">
+				<value>곽두팔</value>
+				<value>김춘삼</value>
+			</list>
+		</property>
+		<property name="family">
+			<map key-type="java.lang.String" value-type="java.lang.Integer">
+				<entry key="아버지" value="300"></entry>
+				<entry key="어머니" value="290"></entry>
+			</map>
+		</property>
+		<property name="pet" ref="d1"></property> <!-- 이사람은 애완동물을 키우는데 강아지를 키웁니다 -->
+	</bean>
+	
+	
+	
+	 
+ 	<bean id="d1" class="com.beaver.feb102.dog.Dog">	<!-- 42번줄의 d1과 동일한 d1 -->
+ 		<property name="name" value="멈무" />
+ 		<property name="age" value="5" />
+ 	</bean>
+ 	<bean id="c1" class="com.beaver.feb102.cat.Cat">
+ 		<property name="name" value="먀몸" />
+ 		<property name="age" value="2" />
+ 	</bean>
+ 	
+ 	<!--
+ 		어딘가에 bean을 등록해놓으면
+ 		@Autowired 해석해서 해당 객체를 가져다 쓰겠다는 의미!
+ 	 -->
+	<context:annotation-config></context:annotation-config>
+</beans>	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+

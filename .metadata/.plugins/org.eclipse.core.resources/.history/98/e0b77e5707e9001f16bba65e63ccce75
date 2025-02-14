@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.puft.feb122.student.StudentMapper">
+<!-- 입력받은 것을 DAO에보내서 Mapper인터페이스에 보낸 뒤에
+현재 Mapper의 insert와 매칭시킴  -->
+ <insert id = "regStudent" parameterType="com.puft.feb122.student.Student">
+ <!-- id의 노란 줄을 없애야함 -->
+ insert into feb12_student(
+  feb12_student_seq.nextval,
+  #{s_name}, #{s_nickname} )
+ 
+ </insert>
+</mapper>

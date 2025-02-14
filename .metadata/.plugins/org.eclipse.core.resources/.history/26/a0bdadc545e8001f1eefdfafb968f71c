@@ -1,0 +1,37 @@
+package com.puft.feb113.calculator;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+
+
+public class CalcController {
+	@Autowired
+    private CalculatorDAO cDAO;
+	
+	@RequestMapping(value = "unit.convert", method = RequestMethod.POST)
+	public String calcXY(Input ip, HttpServletRequest req) {
+	
+        cDAO.Calculate(ip.getInput(), ip.getOption());
+        if(ip.getOption().equals("cm")) {
+        	
+        	req.setAttribute("opt", "red");
+        }else if(ip.getOption().equals("m")) {
+        	
+        	req.setAttribute("opt", "green");
+        }else if(ip.getOption().equals("cel")) {
+        	
+        	req.setAttribute("opt", "blue");
+        }else if(ip.getOption().equals("speed")) {
+        	
+        	req.setAttribute("opt", "pink");
+        } 
+		
+		
+		return "jsp/index";
+	}
+	
+}

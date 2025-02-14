@@ -1,0 +1,16 @@
+package com.puft.feb101.dog;
+
+public class Dog {
+   private String name;
+   private int age;
+   public Dog() {
+	// TODO Auto-generated constructor stub
+}
+   
+   public Dog(String name, int age) {
+	   super();
+	   this.name = name;
+	   this.age = age;
+   }
+   
+}

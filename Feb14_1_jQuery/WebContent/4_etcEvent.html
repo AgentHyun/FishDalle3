@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<script type = "text/javascript" src = "jQuery.js">
+</script>
+
+
+<script type = "text/javascript">
+
+
+$(function(){
+	//select 값을 바꾸면
+	$("select").change(function(){
+		
+		let t = $(this).val();
+		//alert(t);
+		if(t === "직접입력"){
+			$(this).removeAttr("name");
+			let eAddr = $("<input>").attr("name", "eAddr");
+			$("div").append(eAddr);
+			
+		}else{
+			$("div").empty();
+			$(this).attr("name");
+		}
+	});
+	
+	
+});
+
+
+</script>
+</head>
+<body>
+   <select name = "eAddr">
+   <option value = "naver.com">naver.com</option>
+   <option  value = "gmail.com">gmail.com</option>
+   <option  value = "kakao.com">kakao.com</option>
+   <option>직접입력</option>
+   </select>
+   <div></div>
+</body>
+</html>

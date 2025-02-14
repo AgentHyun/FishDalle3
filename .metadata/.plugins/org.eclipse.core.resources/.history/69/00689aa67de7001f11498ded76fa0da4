@@ -1,0 +1,16 @@
+package com.puft.feb101.human;
+
+import java.util.ArrayList;
+
+public class Human {
+    //기본형
+	private String name;
+	private int age;
+     
+	
+	private String[] nickname;
+	private ArrayListist<String> friend;
+	private HashMap<String Integer> family;
+	
+	private Dog pet;
+}

@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+body {
+    background-image: url('/resources/img/background.jpg');
+    background-size: cover; /* 옵션: 배경 이미지가 화면에 꽉 차게 맞춰짐 */
+}

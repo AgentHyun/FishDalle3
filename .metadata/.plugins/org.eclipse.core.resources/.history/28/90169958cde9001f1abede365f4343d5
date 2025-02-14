@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+
+<title>Insert title here</title>
+<style type = "text/css">
+img{
+   position : fixed;
+   transition : all 0.5s ease-out;
+}
+button{
+position : fixed;
+top : 150px;}
+
+</style>
+
+<script type = "text/javascript" src = "jQuery.js"></script>
+<script type = "text/javascript">
+$(function(){
+
+	//setInterval : JavaScript의 반복 함수
+	// 일정한 시간 간격으로 코드를 반복 실행
+	//setTimeout : 정해진 시간 후에 코드가 한번 실행
+	
+	 setInterval(() => {
+	  let x = Math.random() * 500;
+	  let y = Math.random() * 500;
+	  $("img").css("top", y + "px");
+	  $("img").css("left", x + "px");
+		 
+	}, 1000);
+	//1초마다 한 번 씩 반복
+	
+	let b = false;
+	$("button").click(()=>{
+		if(!b){
+			// attr() : 속성을 가져오거나 추가하는 기능
+			$("img").attr("src", "chocolate.png");
+			
+		} else{
+			$("img").attr("src", "candy.png");
+			
+		}
+		
+		b = !b;
+		
+	});
+	
+	
+});
+
+
+</script>
+
+
+</head>
+<body>
+
+<img src = "candy.png">
+<button>이미지 바꾸기</button>
+<table border = "1" id = "t">
+<tr>
+<td><a href = "https://www.naver.com">네이버로</a>
+</td>
+</tr>
+<tr>
+<td><a href = "https://www.youtube.com">유튜브로</a>
+</td>
+</tr>
+<tr>
+<td><a href = "https://www.google.com">구글로</a>
+</td>
+</tr>
+
+</table>
+</body>
+</html>

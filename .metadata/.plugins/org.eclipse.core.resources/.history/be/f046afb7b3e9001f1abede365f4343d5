@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<script type = "text/javascript">
+    //인터프리터 방식 언어 :
+    // 실행을 하면 위에서부터 한줄씩 기계어로 번역을 해서 실행
+    // (cf : 컴파일 방식 언어 : 
+   //    실행하면 전체를 한번에 번역을 해서 실행)
+   // 전체를 번역하는 컴파일 방식이 부재
+   //   =>에러가 발생하지 않음 => 에러잡기가 힘들다
+  //DOM 객체에 onXXX 이벤트를 연결
+  let iInput = null;
+  
+   function init(){
+	   iInput = document.getElementById("i")
+	   alert(iInput);
+	   
+	   
+   }
+  
+   function print(){
+	   alert(iInput.value);
+   }
+</script>
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body onload = "init();"> <!-- onload : 실행 시 페이지를 모두 로딩한 후
+                            지정한(init();) 함수가 호출이 됨  -->
+ <input id = "i">
+   <button onclick = "print();">Print</button>
+   
+</body>
+</html>

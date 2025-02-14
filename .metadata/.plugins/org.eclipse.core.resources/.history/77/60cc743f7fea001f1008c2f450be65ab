@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<style type = "text/css">
+td {height : 100px;}
+input {height : 50px;
+       background-color : teal;
+       color : white;}
+button {width : 100px; height : 50px;}
+
+
+
+</style>
+<title>Insert title here</title>
+<script type = "text/javascript" src = "jQuery.js"></script>
+<script type = "text/javascript">
+$(function(){
+	
+   //선택자를 지정하지 않았을 때 특정 DOM객체를
+   //어떻게 찾아낼 것인가
+   $("button").click(function(){
+	   
+           // $(this) : 클릭이벤트의 발생함수를 호출한 장본인
+           //    누른 버튼만 해당하는 명령을 실행하도록!
+           $(this).css("background-color", "white");
+           
+           
+           //누른 버튼이 있는 td에 배경색을 주기
+           //parent() : 내가 누른 this의 한단계 상위 DOM객체
+           // cf) 한단계 하위 객체 : children()
+           $(this).parent().css("background-color", "pink");
+         //  $(this).parent().parent().parent().css("border","1px solid blue");
+           
+           
+           // 누른 버튼이 있는 table의 테두리를 파란색으로
+           
+          //closest("CSS선택자") : 상위에 있는 것 중에서 가장 가까운 CSS선택자
+          $(this).closest("table").css("border", "blue solid 3px");
+          //cf) find("CSS선택자") : 하위객체 중에서 특정한(CSS선택자)
+          
+          
+          
+         
+        
+        
+          
+          
+     
+   });
+   
+   
+    $("td").click(function(){
+ 	  
+    	 //td를 클릭했을 때 누른 td의 배경색을 노란색
+ 	  $(this).css("background-color", "yellow");  
+ 	// td를 클릭했을 때 그 td속에 있는 모든 것들의 배경색을 핑크색
+ 	  $(this).find("input").css("background-color", "pink");  
+ 	 $(this).find("button").css("background-color", "pink");
+    	//  $(this).css("background-color", "pink");  
+    	 
+    	 // td를 클릭했을 때 그 td속에 들어있는 버튼의 테두리색 (색자유)
+ 	 $(this).find("button").css("border", "3px solid green");
+   
+  
+     
+     
+     
+    });
+    // input에 쓴 글자가 (입력하고 버튼 눌렀을 때)
+    //해당 input과 동일선상에 있는 button의 글자색이 되도록
+    $("button").click(function(){
+    	$(this).closest("input").css("color", "orange");
+    	
+    	
+    });
+    
+
+  
+	
+});
+
+
+
+
+</script>
+
+</head>
+<body>
+
+<table border= "1">
+<tr><td><input> <button>11111111111</button></td></tr>
+<tr><td><input> <button>22222222222</button></td></tr>
+
+
+</table>
+<table border= "1">
+<tr><td><input> <button>33333333333</button></td></tr>
+<tr><td><input> <button>44444444444</button></td></tr>
+
+
+</table>
+
+
+
+
+</body>
+</html>

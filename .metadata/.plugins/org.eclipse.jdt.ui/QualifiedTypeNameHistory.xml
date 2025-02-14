@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.springframework.context.support.AbstractApplicationContext"/>
+<fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="com.puft.feb101.dog.Dog"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.puft.feb101.cat.Cat"/>
+<fullyQualifiedTypeName name="com.puft.feb101.human.Human"/>
+<fullyQualifiedTypeName name="com.feb211.member.MemberDAO"/>
+<fullyQualifiedTypeName name="javax.inject.Qualifier"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestParam"/>
+<fullyQualifiedTypeName name="org.springframework.validation.BindingResult"/>
+<fullyQualifiedTypeName name="com.puft.feb112.calc.CalcResult"/>
+<fullyQualifiedTypeName name="com.puft.feb112.calc.CalcDAO"/>
+<fullyQualifiedTypeName name="com.puft.feb113.calculator.CalculatorDAO"/>
+<fullyQualifiedTypeName name="com.puft.feb113.uc.UCDAO"/>
+<fullyQualifiedTypeName name="com.puft.feb113.uc.UCResult"/>
+<fullyQualifiedTypeName name="com.oreilly.servlet.MultipartRequest"/>
+<fullyQualifiedTypeName name="java.math.BigDecimal"/>
+<fullyQualifiedTypeName name="com.puft.feb122.student.StudentMapper"/>
+<fullyQualifiedTypeName name="com.puft.feb122.student.Student"/>
+<fullyQualifiedTypeName name="com.puft.feb122.score.Score"/>
+<fullyQualifiedTypeName name="com.puft.feb122.score.ScoreDAO"/>
+<fullyQualifiedTypeName name="com.puft.feb122.score.ScoreMapper"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+<fullyQualifiedTypeName name="org.apache.ibatis.session.SqlSession"/>
+<fullyQualifiedTypeName name="java.text.SimpleDateFormat"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+<fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMapping"/>
+<fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestMethod"/>
+<fullyQualifiedTypeName name="com.puft.feb122.student.StudentDAO"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletRequest"/>
+<fullyQualifiedTypeName name="com.puft.feb122.test.TestDAO"/>
+</qualifiedTypeNameHistroy>

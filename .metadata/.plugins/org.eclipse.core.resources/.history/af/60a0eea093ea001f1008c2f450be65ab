@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type = "text/css">
+ div {border : pink solid 3px; width : 200px; height : 200px;}
+</style>
+
+<script type = "text/javascript" src = "jQuery.js">
+</script>
+
+
+<script type = "text/javascript">
+
+$(function(){
+
+	
+	//마우스를 누를때
+	$("div").mousedown(function(){
+		$("h1").text("mousedown");
+	});
+   //마우스를 땠을 때
+	$("div").mouseup(function(){
+		$("h1").text("mouseup");
+	});
+	$("div").mouseenter(function(){
+		$("h1").text("mouseenter");
+	});
+
+	$("div").mouseleave(function(){
+		$("h1").text("mouseleave");
+	});
+	
+	
+	
+	
+	
+	
+});
+
+
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div></div>
+<h1></h1>
+<h2></h2>
+
+
+
+
+</body>
+</html>

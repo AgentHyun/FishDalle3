@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	 http://www.springframework.org/schema/context
+	  http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+	
+
+    
+<!-- <bean id = "d" class = "com.puft.feb101.Dog"></bean>
+<bean id = "d2" class = "com.puft.feb101.Dog">
+  <property name="name" value = "개님" />
+  <property name="age" value = "40" />
+</bean>
+<bean id = "d3" class = "com.puft.feb101.Dog">
+   <constructor-arg value = "개느님"/>
+   <constructor-arg value = "999"/>
+   
+</bean> -->
+ 
+ <!-- 어딘가에 bean을 등록해놓으면 @Autowired 해석해서 해당 객체를
+ 가져다 쓰겠다는 의미  -->
+ <bean id = "d1" class = "com.puft.feb101.dog.Dog">
+ <property name = "name" value = "멈무"/>
+ <property name = "age" value = "5"/> 
+ </bean>
+ <bean id = "c1" class = "com.puft.feb101.cat.Cat">
+ <property name = "name" value = "먀먕"/>
+ <property name = "age" value = "2"/>
+ 
+</bean>
+ 
+ 
+ <context:annotation-config>
+ 
+ </context:annotation-config>
+
+
+
+
+
+</beans>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<style type = "text/css">
+h1{
+ position : fixed;
+}
+
+</style>
+<title>Insert title here</title>
+<script type = "text/javascript" src = "jQuery.js">
+</script>
+<script type = "text/javascript">
+   
+   
+   
+   //input에서 keyboard를 누르면 => 누른순간에
+   $("input").keydown(function(){
+	  $("h1").text("키보드를 누른 순간"); 
+   });
+
+</script>
+</head>
+<body>
+  <h2>텍스트</h2>
+  <input>
+  <h1></h1>
+</body>
+</html>

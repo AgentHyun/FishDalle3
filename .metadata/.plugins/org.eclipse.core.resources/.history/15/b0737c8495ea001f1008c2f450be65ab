@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type = "text/css">
+ div {border : pink solid 3px; width : 200px; height : 200px;}
+ img {position : fixed;}
+ BODY {cursor: none;}
+</style>
+
+<script type = "text/javascript" src = "jQuery.js">
+</script>
+
+
+<script type = "text/javascript">
+
+$(function(){
+
+	
+	//마우스를 누를때
+	$("div").mousedown(function(){
+		$("h1").text("mousedown");
+	});
+   //마우스를 땠을 때
+	$("div").mouseup(function(){
+		$("h1").text("mouseup");
+	});
+	$("div").mouseenter(function(){
+		$("h1").text("mouseenter");
+	});
+
+	$("div").mouseleave(function(){
+		$("h1").text("mouseleave");
+	});
+	
+	//DOM객체의 정확한 좌표를 알고 싶을 때
+	// (html에 약간의 여백이 존재해서)
+	//.offset() : 특정한 좌표로 이동시킴
+	let divX = $("div").offset().left; //선택자의 정학한 x좌표
+	let divY = $("div").offset().top;//선택자의 정학한 x좌표
+
+	
+	$("div").mousemove(function(e){
+		//마우스커서의 좌표 표시 (html 기준)
+		
+		//$("h2").text("mousemove : " + e.pageX  + "," + e.pageY);
+		
+		// div를 기준으로 한 정확한 좌표
+		let x = e.pageX - divX;
+		let y = e.pageY - divY;
+		$("h2").text("정확한 좌표 : " + x + ", " + y);
+		
+	});
+	
+	$("html").mousemove(function(e){
+	
+		$("img").css("left", (e.pageX+1) + "px");
+		$("img").css("top", (e.pageY+1) + "px");
+		
+		
+		
+	});
+	
+	
+	
+});
+
+
+</script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div></div>
+<h1></h1>
+<h2></h2>
+<img src = "candy.png">
+
+
+
+</body>
+</html>

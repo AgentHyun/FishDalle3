@@ -1,0 +1,6 @@
+@charset "UTF-8";
+
+input{
+	
+	border : pink solid 3px;
+}

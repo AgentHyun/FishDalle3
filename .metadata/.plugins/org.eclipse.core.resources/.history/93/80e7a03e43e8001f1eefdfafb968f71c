@@ -1,0 +1,14 @@
+package com.puft.feb113.calculator;
+
+public class Input {
+private double input;
+private String cm;
+private String m;
+private String cel;
+private String speed;
+public Input() {
+	// TODO Auto-generated constructor stub
+}
+	
+	
+}
