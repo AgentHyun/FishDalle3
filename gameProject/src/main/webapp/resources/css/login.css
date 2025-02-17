@@ -1,0 +1,57 @@
+@charset "UTF-8";
+.jua-regular {
+  font-family: "Jua", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.login-section{
+  background-color : #A3D1C6;
+  font-family: "Jua", serif;
+  width : 300px;
+  border-radius : 5%;
+  text-align : center;
+  justify-content:center;
+  margin-left : 700px;
+  margin-top : 100px;
+  height : 400px;
+  align-items: center;
+  display : flex;
+  flex-direction: column;
+  box-shadow: 4px 4px 4px #789DBC;
+  opacity : 0.7;
+  margin-top : - 100px;
+  color : white;
+  box-shadow: 3px 3px 3px white;
+}
+.login-btn{     font-family: "Jua", serif;
+	margin-left:20px;
+	background-color: buttonshadow;
+	height : 60px;
+	border-radius : 5%;
+	 box-shadow: 4px 4px 4px gray;
+	 cursor : pointer;
+     border : 2px solid white; 
+	 margin-top : 20px;
+	 color : #789DBC;
+}
+.login-btn:hover{
+	background-color : white;
+}
+.login-input-id{
+	margin : 10px;
+		 box-shadow: 1px 1px 1px gray;
+		 border-radius : 5%;
+		 width : 150px;
+		 border : 2px solid white;
+}
+.login-input-pw{
+	margin : 10px;
+		 box-shadow: 1px 1px 1px gray;
+		 border-radius : 5%;
+		 width : 140px;
+		  border : 2px solid white;
+}
+.login-input:hover{
+	background-color : orange;
+}

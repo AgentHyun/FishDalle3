@@ -283,3 +283,19 @@
 2월 14, 2025 15:44:20.60 [9588:8568:0214/154420.599:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 14, 2025 15:45:57.36 [9588:8568:0214/154557.367:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 14, 2025 15:48:48.05 [9588:8568:0214/154848.050:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 14, 2025 16:00:50.06 Created TensorFlow Lite XNNPACK delegate for CPU.
+2월 14, 2025 16:00:50.19 [12384:13172:0214/160050.193:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 14, 2025 16:01:19.06 [12384:13172:0214/160119.067:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 14, 2025 16:02:16.54 [12384:13172:0214/160216.543:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 14, 2025 16:03:37.80 [12384:13172:0214/160337.809:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 14, 2025 16:06:32.33 [12384:13172:0214/160632.336:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 14, 2025 16:13:28.60 [12384:13172:0214/161328.600:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 14, 2025 17:50:25.77 [12384:9444:0214/175025.771:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
+
+2월 17, 2025 09:04:23.63 NEW SESSION
+2월 17, 2025 09:04:23.63 [10336:8832:0217/090423.628:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 17, 2025 09:04:23.89 Created TensorFlow Lite XNNPACK delegate for CPU.
+2월 17, 2025 09:04:49.53 [10336:8832:0217/090449.531:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 17, 2025 09:05:30.51 [10336:8832:0217/090530.518:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 17, 2025 09:07:10.47 [10336:8832:0217/090710.473:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 17, 2025 09:10:54.46 [10336:8832:0217/091054.460:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT

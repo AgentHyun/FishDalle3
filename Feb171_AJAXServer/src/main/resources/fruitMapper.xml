@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.puft.feb171.Fruit.FruitMapper">
+
+
+
+<select id = "getAllFruit" resultType = "com.puft.feb171.Fruit.Fruit">
+      select * from feb_17_fruit order by f_price
+   </select>
+<select id = "searchFruit" resultType = "com.puft.feb171.Fruit.Fruit"
+   parameterType="com.puft.feb171.Fruit.Fruit">
+      select * from feb_17_fruit where f_price &lt;= #{f_price} order by f_price 
+   </select>
+
+</mapper>

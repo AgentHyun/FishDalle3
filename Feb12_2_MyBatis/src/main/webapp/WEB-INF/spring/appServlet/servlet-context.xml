@@ -46,6 +46,7 @@
 			<beans:value>classpath:studentMapper.xml</beans:value>	
 			<beans:value>classpath:scoreMapper.xml</beans:value>	
 				<beans:value>classpath:testMapper.xml</beans:value>
+              			<beans:value>classpath:fruitMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
