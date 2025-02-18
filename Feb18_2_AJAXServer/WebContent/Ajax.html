@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type = "text/javascript" src = "jQuery.js">
+
+</script>
+
+<script type = "text/javascript">
+// AJAX -JavaScript -> 웹브라우저
+// 브라우저의 동일출처정책에 걸리기 때문에
+// AJAX는 다른사람의 것을 가져올 수는 없습니다.
+//   : 웹과 상호작용을 하는 JavaScript 코드에 대한 '보안' 정책
+
+// Cross-Domain AJAX - 브라우저의 동일출처정책을 뚫어버리는
+//    다른 사람이 만든거 가져오는 AJAX
+
+//   [서버측에서 다른사람에게 주고싶다면]
+//    1) JSONP (JSON with Padding) - 잘 사용안함
+//    일부러 json모양을 뭉개버려서 JSON이 아닌것처럼
+//    2) 응답 헤더 : Access-Control-Allow-Origin 세팅
+//             'CORS(Cross-Origin Resource Sharing)'
+
+//  [서버측에서 CrossDomain을 허용안했다면
+//      =>클라이언트가 직접 잡업을 해야!]
+//      3) proxy 서버
+//      :서버와 클라이언트 사이에 중계 기능을 해줌
+//      AJAX로는 기상청 데이터를 가져올 수 없음
+//      Java로는 가능 O
+ 
+
+$(function(){
+	
+	//https://www.kma.go.kr/repositary/xml/fct/mon/img/fct_mon1rss_108_20250213.xml
+	
+	//http://localhost/feb181/error.getJSON
+	$.ajax({
+		url : "https://www.kma.go.kr/repositary/xml/fct/mon/img/fct_mon1rss_108_20250213.xml",
+		success: function(asd){
+			alert(asd);
+		}
+	});
+	$.getJSON("http://localhost/feb181/error.getJSON", function(asd){
+		alert(JSON.stringify(asd));
+	});
+	
+});
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

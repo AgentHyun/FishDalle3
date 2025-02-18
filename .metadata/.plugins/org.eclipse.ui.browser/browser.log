@@ -299,3 +299,21 @@
 2월 17, 2025 09:05:30.51 [10336:8832:0217/090530.518:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 17, 2025 09:07:10.47 [10336:8832:0217/090710.473:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 17, 2025 09:10:54.46 [10336:8832:0217/091054.460:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+
+2월 18, 2025 09:24:15.74 NEW SESSION
+2월 18, 2025 09:24:15.74 [9140:2832:0218/092415.739:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 09:24:15.80 Created TensorFlow Lite XNNPACK delegate for CPU.
+2월 18, 2025 09:24:38.93 [9140:2832:0218/092438.932:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 09:25:26.82 [9140:2832:0218/092526.822:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 09:26:55.90 [9140:2832:0218/092655.907:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 09:30:44.95 [9140:2832:0218/093044.958:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 09:38:05.43 [9140:2832:0218/093805.439:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 09:59:09.64 [9140:8752:0218/095909.644:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
+2월 18, 2025 10:35:06.88 Created TensorFlow Lite XNNPACK delegate for CPU.
+2월 18, 2025 10:35:06.99 [11632:13352:0218/103506.998:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 10:35:32.04 [11632:13352:0218/103532.045:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 10:36:26.94 [11632:13352:0218/103626.944:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 10:38:06.70 [11632:13352:0218/103806.702:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 10:41:57.17 [11632:13352:0218/104157.179:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 10:49:06.25 [11632:13352:0218/104906.256:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 18, 2025 12:38:35.17 [11632:14920:0218/123835.178:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
