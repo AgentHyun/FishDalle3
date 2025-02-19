@@ -9,8 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class = "title">Fish Traveler</div>
+<div class = "landing-section">
+<div class = "title">Fish Dalle3</div>
 <jsp:include page="${lp }"></jsp:include>
-
+</div>
 </body>
 </html>
