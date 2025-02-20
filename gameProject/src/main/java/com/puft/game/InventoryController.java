@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class InventoryController {
@@ -28,16 +29,15 @@ public class InventoryController {
     }
 
 
-    @RequestMapping(value = "/insertInventory", method = RequestMethod.GET)
-    public String addInventory(HttpServletRequest req) {
+    @RequestMapping(value = "/insertInventory", method = RequestMethod.POST)
+    public String addInventory(@RequestParam("f_name") String f_name, @RequestParam("f_price") int f_price, HttpServletRequest req) {
         try {
-      
-            iDAO.insertInventory(req);
+            iDAO.insertInventory(f_name, f_price);
+            iDAO.selectAllInventory(req);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        
         return "main";  
     }
+
 }

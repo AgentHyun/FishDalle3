@@ -17,29 +17,19 @@ public class InventoryDAO {
     SqlSession ss;
 
  
-    public void insertInventory(HttpServletRequest req) {
+    public void insertInventory(String f_name, int f_price) {
         try {
-         
-            String f_name = req.getParameter("f_name");
-            int f_price = Integer.parseInt(req.getParameter("f_price"));
-
-   
             Inventory inventory = new Inventory();
             inventory.setF_name(f_name);
             inventory.setF_price(f_price);
 
-
             InventoryMapper mapper = ss.getMapper(InventoryMapper.class);
             mapper.insertInventory(inventory); 
-
-       
-            List<Inventory> inventoryList = mapper.selectAllInventory();
-            req.setAttribute("inventoryList", inventoryList);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
 
     
     public void selectAllInventory(HttpServletRequest req) {
@@ -58,4 +48,5 @@ public class InventoryDAO {
             e.printStackTrace();
         }
     }
+
 }

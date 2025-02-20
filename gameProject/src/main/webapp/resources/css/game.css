@@ -9,6 +9,7 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+      font-family: "Hi Melody", serif;
 }
 
 .hi-melody-regular {
@@ -60,6 +61,7 @@ body {
 .inventory h2 {
     margin-top: -10px;
     text-align: center;
+    font-size : 40pt;
 }
 
 .inventory ul {
@@ -104,7 +106,9 @@ body {
     border: 2px solid #4DA1A9;
     box-shadow: 2px 2px 2px #4DA1A9;
 }
-
+.blue{
+	color : #578FCA;
+}
 h3 {
     font-family: "Hi Melody", serif;
     font-size: 50px;
@@ -135,9 +139,92 @@ h4 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
+.UserInfo {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
 .inventory h2 {
     text-align: center;
-    font-size: 24px;
+    font-size: 40px;
+}
+.user-title {
+	margin-bottom : -10px;
+    text-align: center;
+    font-size: 30pt;
+}
+.UserInfoTbl {
+    text-align: center;
+    margin-top : 60px;
+    font-size: 30px;
+    
+}
+.Money{
+	margin-top : -10px;
+	  padding-left: 100px;
+	color : yellow;
+}
+.close-btn{
+	background-color : transparent;
+}
+.close-btn:hover{
+	cursor : pointer;
+	transparent : 0.5;
+}
+.catched{
+	border-style: none;
+	
+}
+
+.inventory-tbl {
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap;
+    justify-content: space-around; 
+    gap: 10px; 
+}
+
+.inventory-tbl tr {
+    display: flex;
+    flex-direction: row; 
+   
+}
+.catched-fish{
+	
+	border : 2px #FFEB00 solid;
+	width : 50px;
+	height : 50px;
+	
+}
+
+.inventory-tbl td {
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center;
+    
+}
+.catching-tbl{
+	 border : 2px solid #F5EFFF;
+}
+.fish-img {
+    margin: 5px;
+    width: 30px; 
+    height: 30px;
+}
+
+.fish-img:hover {
+    cursor: pointer;
+    opacity: 0.7;
 }
 
 .inventory ul {

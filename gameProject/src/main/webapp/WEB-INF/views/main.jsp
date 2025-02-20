@@ -15,20 +15,27 @@
         function toggleInventory() {
             $("#inventory").fadeToggle(500); 
         }
+        
+        function toggleUserInfo() {
+            $("#inventory").fadeToggle(500); 
+        }
+        
+        
+        
+        
         function showInfo(fishName, fishPrice, event) {
             var clickX = event.pageX; 
             var clickY = event.pageY;
 
-            // 이미 열려 있는 정보 창을 닫음
             if ($("#info-modal").length > 0) {
                 $("#info-modal").remove();
                 return;
             }
 
-            // 모달 HTML 구성
+           
             var infoHtml = 
                 '<div class = "info-modal" id="info-modal" style="' +
-                    'display: none;' + // 초기 상태는 숨김
+                    'display: none;' + 
                     'position: absolute; ' + 
                     'top: ' + clickY + 'px; ' +  
                     'left: ' + (clickX + 20) + 'px; ' + 
@@ -39,9 +46,9 @@
                     'border-radius: 10px; ' + 
                     'box-shadow: 0px 0px 10px rgba(0,0,0,0.3); ' + 
                     'font-family: \'Jua\', sans-serif;">' +
-                    '<h2>' + fishName + '</h2>' +
+                    '<h2 class = "blue">' + fishName + '</h2>' +
                     '<p>가격: ' + fishPrice + ' ₩</p>' +
-                    '<button class = "close-btn" onclick="closeInfo()">x</button>' +
+                    '<button class = "close-btn" onclick="closeInfo()">❌</button>' +
                 '</div>';
 
          
@@ -78,6 +85,11 @@
             let canFightFishing = false; 
             let intervalId = null;
             let isFishingZone = false;
+            let userMoney = 0;
+            
+            
+            $("#UserInfoTbl").append( 
+                    "<tr><td class='Money'>💰 " + userMoney + "₩</td></tr>");
 
             
             $.ajax({
@@ -208,15 +220,38 @@
                                                             let randomNum = Math.floor(Math.random() * 5) + 1;
                                                             $.getJSON("fish.searchJSON?f_no=" + randomNum, function(zxc) {
                                                                 $.each(zxc.fish, function(i, f) {
-                                                                    $("#status").html("<h3>" + "<span class='blue'>" + f.f_name + "</span>" + "획득! " + f.f_price + " 💰" + "</h3>");
-                                                                    userMoney += f.f_price;
-
+                                                                    // 낚시 성공 후 인벤토리 항목 추가 및 메시지 표시
+                                                                    $("#status").html("<h3>" + "<span class='blue'>" + f.f_name + "</span>" + "획득!" + " 💰" + f.f_price + "</h3>");
+                                                                    
+                                                                    // 인벤토리 항목 등록
                                                                     $.ajax({
-                                                                        url: '/insertInventory',  
-                                                                        type: 'GET',
+                                                                        url: '/game/insertInventory',
+                                                                        type: 'POST',
                                                                         data: { f_name: f.f_name, f_price: f.f_price },
                                                                         success: function(response) {
-                                                                            console.log("인벤토리 항목 추가 성공", response);
+                                                                           
+                                                                            $.ajax({
+                                                                                url: '/game/getAllInventory', 
+                                                                                type: 'GET',
+                                                                                success: function(response) {
+                                                                                   
+                                                                                    console.log("인벤토리 갱신 성공", response);
+                                                                                    
+                                                                                   
+                                                                                  
+                                                                                    
+                                                                                  
+                                                                                    $("#inventory-tbl").append(
+                                                                                    		"<td class='" + "catched" + "'><img class='catched-fish' src='resources/img/" + f.f_name + ".png' onclick='showInfo(\"" + f.f_name + "\", \"" + f.f_price + "\", event)' /></td>"
+
+                                                                                    	);
+
+                                                                                    
+                                                                                },
+                                                                                error: function(xhr, status, error) {
+                                                                                    console.error("인벤토리 목록 갱신 실패", error);
+                                                                                }
+                                                                            });
                                                                         },
                                                                         error: function(xhr, status, error) {
                                                                             console.error("인벤토리 항목 추가 실패", error);
@@ -224,6 +259,7 @@
                                                                     });
                                                                 });
                                                             });
+
                                                         }
 
                                                     }, 600);
@@ -268,6 +304,7 @@
             });
 
             let isInventory = false;
+            let isUserInfo = false;
             $(document).keydown(function(e) {
                 if (e.keyCode == 69) { 
                     isInventory = !isInventory;
@@ -277,7 +314,23 @@
                         $("#inventory").fadeOut();
                     }
                 }
+          
+                if (e.keyCode == 85) {  
+                    isUserInfo = !isUserInfo;
+                    if (isUserInfo) {
+                        $("#UserInfo").fadeIn();
+                    } else {
+                        $("#UserInfo").fadeOut();
+                    }
+                }
+           
+            
+            
+            
             });
+            
+         
+            
         });
     </script>
 
@@ -297,27 +350,53 @@
 </div>
 <div class="left-bar">
     <div class="inventory-menu" onclick="toggleInventory()">🎣 <br>인벤토리<strong>[E]</strong></div>
+        <div class="inventory-menu" onclick="toggleUserInfo()">🧑‍ <br>유저<strong>[U]</strong></div>
 </div>
+
 <div id="inventory" class="inventory" style="display:none;">
-   <table  class="inventory-tbl" id="inventory-tbl">
-    <tr><th><h2>Inventory 🎣</h2></th></tr>
-    
-    <c:forEach var="f" items="${inventoryList }">
-    <tr>
-    <td><img class = "fish-img" src="resources/img/${f.f_name}.png" onclick="showInfo('${f.f_name}', '${f.f_price}', event);"></td>
-   
- 
-    <td> 
- ${inventoryCount[f.f_name] != null ? inventoryCount[f.f_name] : 0}개
- 
- 
- 
- 
-</td></tr>
-         </c:forEach>
-    
-    
+    <table class="inventory-tbl" id="inventory-tbl">
+        <tr><th><h2>Inventory 🎒</h2></th></tr>
+        <c:set var="itemsPerRow" value="4" /> <!-- 한 줄에 표시할 아이템 수 -->
+        <c:set var="itemCount" value="0" /> <!-- 아이템 카운트 초기화 -->
+
+        <tr>
+            <c:forEach var="f" items="${inventoryList}">
+                <c:set var="count" value="${inventoryCount[f.f_name] != null ? inventoryCount[f.f_name] : 0}" />
+           
+                <c:if test="${itemCount % itemsPerRow == 0 && itemCount > 0}">
+                    </tr><tr> 
+                </c:if>
+                <td class = "catching-tbl">
+                    <img class="fish-img" src="resources/img/${f.f_name}.png" 
+                         onclick="showInfo('${f.f_name}', '${f.f_price}', event);" />
+                </td>
+                <c:set var="itemCount" value="${itemCount + 1}" /> 
+            </c:forEach>
+            <div id = "add"></div>
+            
+        </tr>
     </table>
+</div>
+<div id="UserInfo" class="UserInfo" style="display:none;">
+<table id = "UserInfoTbl" class = "UserInfoTbl">
+<tr><div class = "user-title">Status 🧑‍</div></tr>
+<tr>
+<td class = "user-td">
+    User : <br><br>
+</td>
+
+</tr>
+
+<tr>
+<td class = "user-td">
+    전투력 : 3 <br><br><br><br>
+</td>
+
+</tr>
+
+
+</table>
+
 </div>
 
 </body>
