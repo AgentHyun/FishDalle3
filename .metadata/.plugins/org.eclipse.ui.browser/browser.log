@@ -344,3 +344,13 @@
 2월 19, 2025 09:09:40.66 [12476:5364:0219/090940.667:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 19, 2025 10:22:00.70 [12476:10000:0219/102200.705:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
 2월 19, 2025 10:51:51.91 [12476:10000:0219/105151.913:ERROR:device_event_log_impl.cc(199)] [10:51:51.913] Bluetooth: bluetooth_adapter_winrt.cc:1054 Getting Default Adapter failed.
+
+2월 20, 2025 09:02:09.59 NEW SESSION
+2월 20, 2025 09:02:09.59 [992:7116:0220/090209.595:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 20, 2025 09:02:09.88 Created TensorFlow Lite XNNPACK delegate for CPU.
+2월 20, 2025 09:02:38.70 [992:7116:0220/090238.703:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 20, 2025 09:03:31.15 [992:7116:0220/090331.152:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 20, 2025 09:04:58.98 [992:7116:0220/090458.986:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 20, 2025 09:05:06.25 [992:7040:0220/090506.256:ERROR:service_client.cc(36)] Unexpected on_device_model service disconnect: The device's GPU is not supported.
+2월 20, 2025 09:08:01.79 [992:7116:0220/090801.796:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 20, 2025 09:14:48.76 [992:7116:0220/091448.764:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT

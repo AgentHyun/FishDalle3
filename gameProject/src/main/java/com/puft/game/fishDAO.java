@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 
 
+
+
 @Service
 public class fishDAO {
 
@@ -28,6 +30,14 @@ public class fishDAO {
 		}
 		
 		
+	}
+	
+	public Fishes getJSON(HttpServletRequest req) {
+		   return new Fishes(ss.getMapper(FishMapper.class).getAllFish());
+	   }
+
+	public Fishes searchJSON(Fish f, HttpServletRequest req) {
+		return new Fishes(ss.getMapper(FishMapper.class).searchFish(f));
 	}
 	
 	

@@ -43,7 +43,8 @@
 		<beans:property name="typeAliasesPackage" value="com.puft.game" />
 		<beans:property name="mapperLocations">
 			<beans:list>
-				<beans:value>classpath:fruitMapper.xml</beans:value>
+				<beans:value>classpath:fishMapper.xml</beans:value>
+				<beans:value>classpath:inventoryMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

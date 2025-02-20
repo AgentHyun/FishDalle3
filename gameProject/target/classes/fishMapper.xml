@@ -2,8 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.puft.game.FishMapper">
 
-<select id = "getAllFish" resultType = "com.puft.game.Fish">
-      select * from gameFish;
-   
-   </select>
+<select id="getAllFish" resultType="com.puft.game.Fish">
+    SELECT * FROM gameFish
+</select>
+
+<select id="searchFish" resultType="com.puft.game.Fish">
+    SELECT * FROM gameFish WHERE f_no = #{f_no}
+</select>
+
 </mapper>
