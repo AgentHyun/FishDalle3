@@ -43,10 +43,13 @@ public class InventoryController {
     public String sellFish(@RequestParam("f_name") String f_name, @RequestParam("f_price") int f_price,@RequestParam("f_size") int f_size, HttpServletRequest req) {
         try {
            
-            iDAO.sellFish(f_name, f_price, f_size);  
+        	iDAO.selectAllInventory(req);
+        	iDAO.sellFish(f_name, f_price, f_size);  
 
             
-            iDAO.selectAllInventory(req);  
+              
+            
+            
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,0 +1,103 @@
+@charset "UTF-8";
+input:focus {
+	outline: none;
+}
+
+#signupTbl {
+	width: 700px;
+	font-family: "cc";
+	font-size: 15pt;
+	font-weight: 500;
+}
+
+#signupTbl td {
+	height: 60px;
+	color: #FAA8A8;
+}
+
+#signupTbl .i1 {
+	font-family: "cc";
+	font-size: 15pt;
+	font-weight: 500;
+	border: #FAA8A8 solid 3px;
+	border-radius: 10px;
+	padding: 10px;
+	background-color: #DAD9FF30;
+	color: white;
+}
+
+#signupTbl .i1::placeholder {
+	color: black;
+	text-align: center;
+}
+
+#signupTbl button {
+	font-family: "cc";
+	font-size: 20pt;
+	font-weight: 500;
+	border: black solid 3px;
+	border-radius: 10px;
+	width: 90%;
+	height: 50px;
+	background-color: #DAD9FF30;
+	
+}
+
+#signupTbl .i2 {
+	font-family: "cc";
+	font-size: 15pt;
+	font-weight: 500;
+}
+
+#signupTbl .roleTd {
+	width: 100px;
+}
+
+#signupTbl .fileBox .uploadName {
+	font-family: "cc";
+	font-size: 15pt;
+	display: inline-block;
+	height: 40px;
+	padding: 0 10px;
+	vertical-align: middle;
+	border: #FAA8A8 solid 3px;
+	border-radius: 10px;
+	color: black;
+	background-color: #DAD9FF30;
+	margin-left: 20px;
+}
+
+#signupTbl .fileBox .uploadName::placeholder {
+	color: black;
+	text-align: center;
+}
+
+.fileBox label {
+	display: inline-block;
+	padding: 10px 20px;
+	vertical-align: middle;
+	margin-left: 10px;
+	cursor: pointer;
+	height: 20px;
+	color: #FFF;
+	border: #FAA8A8 solid 3px;
+	border-radius: 10px;
+}
+
+.fileBox input[type=file] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	clip: rect(0, 0, 0, 0);
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+}
+
+
+
+
+
+
+

@@ -1,0 +1,50 @@
+@charset "UTF-8";
+#loginTbl {
+	margin-bottom: 30px;
+	width: 500px;
+	font-family: "cc";
+	font-size: 15pt;
+	font-weight: 900;
+}
+
+#loginTbl .i1 {
+	font-family: "cc";
+	font-size: 15pt;
+	border: #EAEFF9 solid 3px;
+	border-radius: 10px;
+	width: 50%;
+	padding: 10px;
+	height: 30px;
+	background-color: #DAD9FF30;
+}
+
+#loginTbl .i1::placeholder {
+	color: black;
+}
+
+#loginTbl td {
+	height: 60px;
+	font-size: 40pt;
+	font-weight: 900;
+	color: white;
+}
+
+#loginTbl button {
+	font-family: "cc";
+	font-size: 15pt;
+	font-weight: 500;
+	border: white solid 3px;
+	border-radius: 10px;
+	width: 50%;
+	padding: 10px;
+	height: 50px;
+	background-color: #DAD9FF30;
+	color: black;
+}
+
+
+
+
+
+
+

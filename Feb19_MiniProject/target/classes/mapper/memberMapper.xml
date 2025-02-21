@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.beaver.feb191mp.member.MemberMapper">
+	<insert id="signupMember" parameterType="com.beaver.feb191mp.member.Member">
+		insert into golfsite_member values(#{gs_id}, #{gs_pw}, #{gs_name}, #{gs_addr}, #{gs_photo}, #{gs_role})	
+	</insert>
+	<select id="getMemberById" parameterType="com.beaver.feb191mp.member.Member" resultType="com.beaver.feb191mp.member.Member">
+		select * from golfsite_member where gs_id = #{gs_id}
+	</select>
+	<delete id="deleteMember" parameterType="com.beaver.feb191mp.member.Member">
+		delete from golfsite_member where gs_id = #{gs_id}
+	</delete>
+	<update id="updateMember" parameterType="com.beaver.feb191mp.member.Member">
+		update golfsite_member set gs_pw = #{gs_pw}, gs_name = #{gs_name}, gs_addr = #{gs_addr}, gs_photo = #{gs_photo} where gs_id = #{gs_id} 
+	</update>
+</mapper>

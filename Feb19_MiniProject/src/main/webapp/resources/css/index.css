@@ -1,0 +1,147 @@
+@charset "UTF-8";
+::-webkit-scrollbar {
+	display: none;
+}
+
+@font-face {
+	font-family: "cc";
+	src: url("cotton_candy.ttf");
+}
+
+body {
+	margin: 0px;
+	padding: 0px;
+	background-image: url(../img/bg1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+	font-family: "cc";
+}
+
+#siteTitleArea {
+	position: fixed;
+	width: 100%;
+	height: 100px;
+}
+
+#siteTitle {
+	width: 1000px;
+	height: 100px;
+}
+
+#siteTitle a {
+	font-size: 50pt;
+	font-weight: 800;
+	color: teal;
+	text-decoration: none;
+	padding-left: 20px;
+}
+
+#resultTd {
+	position: fixed;
+	top: 50px;
+	right: 500px;
+	color: #4374D9;
+	font-size: 20px;
+	font-weight: 500;
+}
+
+#greetMsg {
+	position: fixed;
+	top: 30px;
+	right: 480px;
+	color: #6799FF;
+	font-size: 20px;
+	font-weight: 500;
+}
+
+#siteSubTitle {
+	width: 1000px;
+	text-decoration: none;
+	font-size: 25px;
+	color: white;
+	background-color: #DAD9FF30;
+}
+
+#siteMenuArea {
+	width: 70%;
+}
+
+#siteMenuArea img {
+	height: 50px;
+}
+
+#siteMenuArea2 {
+	width: 800px;
+}
+
+#siteMenuArea2 td {
+	width: 20%;
+	padding-left: 30px;
+}
+
+#siteLoginArea {
+	position: fixed;
+	top: 30px;
+	right: 200px;
+}
+
+#siteSignupArea {
+	position: fixed;
+	top: 33px;
+	right: 100px;
+}
+
+#siteContextArea {
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 250px;
+	width: 1000px;
+	background-color: #DAD9FF30;
+}
+
+#siteNoticeArea {
+	position: fixed;
+	top: 260px;
+	left: 0px;
+	width: 350px;
+	height: 500px;
+}
+
+#noticeTitle {
+	width: 90%;
+	height: 15%;
+	background-color: #DAD9FF30;
+	font-size: 30pt;
+	font-weight: 600;
+	color: white;
+}
+
+#noticeHandle {
+	cursor: pointer;
+}
+
+#noticeContext {
+	background-color: #DAD9FF30;
+	font-size: 20pt;
+	font-weight: 500;
+	color: pink;
+}
+
+#G, #O, #L, #F {
+	transition: all 0.3s ease-out;
+}
+
+#city-aqi-container {
+	position: fixed;
+	top: 80px;
+	right: 500px;
+	padding: 5px 10px;
+	font-size: 15pt;
+}
+
+
+#testt {
+	width: 500px;
+}
+
