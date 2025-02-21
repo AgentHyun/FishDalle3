@@ -3,11 +3,16 @@
 <mapper namespace="com.puft.game.InventoryMapper">
 
  <insert id="insertInventory" parameterType="com.puft.game.Inventory">
-        INSERT INTO userInventory VALUES (#{f_name}, #{f_price})
+        INSERT INTO userInventory VALUES (#{f_name}, #{f_price}, #{f_size})
     </insert>
  <select id="selectAllInventory" resultType="com.puft.game.Inventory">
         select * from userInventory
     </select>
+<delete id="sellFish" parameterType="com.puft.game.Inventory">
+    DELETE FROM userInventory 
+    WHERE F_NAME = #{f_name} 
+    AND ROWNUM = 1
+</delete>
 
 
 </mapper>

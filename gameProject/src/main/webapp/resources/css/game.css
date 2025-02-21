@@ -123,6 +123,11 @@ h4 {
     color: #FBFBFB;
 }
 
+.size{
+	color : #F2E5BF;
+	
+	
+}
 
 .inventory {
     position: fixed;
@@ -130,7 +135,7 @@ h4 {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 300px;
-    height: 400px;
+    height: 450px;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     padding: 20px;
@@ -175,14 +180,25 @@ h4 {
 }
 .close-btn{
 	background-color : transparent;
+	border : none;
+	margin-left :70px;
+	margin-top : -20px;
+}
+.sell-msg{
+	text-align : center;
+	font-size : 15pt;
+	
+}
+.sell-money{
+	margin-top : 400px;
 }
 .close-btn:hover{
 	cursor : pointer;
 	transparent : 0.5;
 }
-.catched{
-	border-style: none;
-	
+
+.gold{
+   color : #FFB200;
 }
 
 .inventory-tbl {
@@ -192,17 +208,30 @@ h4 {
     justify-content: space-around; 
     gap: 10px; 
 }
-
+.info-title{
+	
+	color : #536493;
+}
+.info-modal{
+	background-color: #89A8B2;
+	width : 150px;
+	height : 200px;
+	text-align : center;
+}
 .inventory-tbl tr {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
+    border = none; 
    
+}
+.white{
+	color : white;
 }
 .catched-fish{
 	
 	border : 2px #FFEB00 solid;
-	width : 50px;
-	height : 50px;
+	width : 30px;
+	height : 30px;
 	
 }
 
@@ -211,10 +240,10 @@ h4 {
     flex-direction: row; 
     justify-content: center;
     align-items: center;
-    
+    border = none;
 }
 .catching-tbl{
-	 border : 2px solid #F5EFFF;
+	 
 }
 .fish-img {
     margin: 5px;
@@ -226,6 +255,12 @@ h4 {
     cursor: pointer;
     opacity: 0.7;
 }
+.catched-fish{
+	border-style: none;
+	
+}
+
+
 
 .inventory ul {
     list-style-type: none;
@@ -239,6 +274,7 @@ h4 {
 .inventory ul li span {
     margin-left: 10px;
     font-size: 18px;
+    
 }
 
 .inventory .close-btn {
@@ -251,7 +287,27 @@ h4 {
     font-size: 20px;
     cursor: pointer;
 }
-
+.inventory .close-btn:hover{
+	opacity : 0.5;
+	
+}
+.selected {
+    border: 3px solid red;
+    border-radius: 10px;
+}
+#userMoney{
+	margin-left : 60px;
+}
+.sell-btn{
+	
+	margin-left : 40px;
+	background-color : transparent;
+	
+}
+.sell-btn:hover{
+	 cursor: pointer;
+	 opacity : 0.5;
+}
 
 .inventory.active {
     display: block;

@@ -17,12 +17,12 @@ public class InventoryDAO {
     SqlSession ss;
 
  
-    public void insertInventory(String f_name, int f_price) {
+    public void insertInventory(String f_name, int f_price,int f_size) {
         try {
             Inventory inventory = new Inventory();
             inventory.setF_name(f_name);
             inventory.setF_price(f_price);
-
+            inventory.setF_size(f_size);
             InventoryMapper mapper = ss.getMapper(InventoryMapper.class);
             mapper.insertInventory(inventory); 
         } catch (Exception e) {
@@ -48,5 +48,24 @@ public class InventoryDAO {
             e.printStackTrace();
         }
     }
+    
+    public void sellFish(String f_name, int f_price, int f_size) {
+    	try {
+            Inventory inventory = new Inventory();
+            inventory.setF_name(f_name);
+            inventory.setF_price(f_price);
+            inventory.setF_size(f_size);
+
+            InventoryMapper mapper = ss.getMapper(InventoryMapper.class);
+            mapper.sellFish(inventory); 
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    
+    
 
 }

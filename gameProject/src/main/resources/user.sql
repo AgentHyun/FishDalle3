@@ -10,9 +10,10 @@ DROP TABLE gameUser CASCADE CONSTRAINTS;
 create table userInventory(
 
 f_name varchar2(10 char) not null,
-f_price number(6) not null
+f_price number(6) not null,
+f_size number (5) not null
 
 );
 select * from userInventory;
-insert into userInventory values('고등어', 1000);
+insert into userInventory values('고등어', 1000, 30);
 DROP TABLE userInventory CASCADE CONSTRAINTS;

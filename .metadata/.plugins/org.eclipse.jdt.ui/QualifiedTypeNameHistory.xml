@@ -3,7 +3,6 @@
 <fullyQualifiedTypeName name="org.springframework.context.support.AbstractApplicationContext"/>
 <fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
 <fullyQualifiedTypeName name="com.puft.feb101.dog.Dog"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.puft.feb101.cat.Cat"/>
 <fullyQualifiedTypeName name="com.puft.feb101.human.Human"/>
 <fullyQualifiedTypeName name="com.feb211.member.MemberDAO"/>
@@ -53,4 +52,6 @@
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="com.puft.game.Inventory"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>
