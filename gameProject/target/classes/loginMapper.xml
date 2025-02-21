@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.puft.game.LoginMapper">
+
+
+<select id="getMemberById" parameterType="com.puft.game.Login" resultType="com.puft.game.Login"> select * from userLogin where u_id = #{u_id} </select>
+<insert id="signUp" parameterType="com.puft.game.Login"> insert into userLogin values(#{u_id}, #{u_pw}) </insert>
+
+
+</mapper>

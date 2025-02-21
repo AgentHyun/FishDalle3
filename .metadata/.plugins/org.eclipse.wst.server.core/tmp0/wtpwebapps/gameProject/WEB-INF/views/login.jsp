@@ -13,13 +13,17 @@
 <body>
 <div class= "login-section">
 
-<form action = "/game/loginComplete">
-ID : <input class = "login-input-id" autofocus = "autofocus"><br>
-PW : <input class = "login-input-pw" autofocus = "autofocus">
+<form action = "/game/login" method = "post">
+ID : <input name = u_id class = "login-input-id" autofocus = "autofocus"><br>
+PW : <input name = u_pw class = "login-input-pw" autofocus = "autofocus" type = "password">
 <br>
+
+
 <button class = "login-btn">LOG IN</button>
 </form>
-
+<form action = "/game/signupGo" method = "post">
+<button class = "Login-btn">SIGN UP</button>
+</form>
 </div>
 </body>
 </html>
