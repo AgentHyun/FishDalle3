@@ -16,6 +16,7 @@
         let userMoney = 0;
         let rodDamage = 0;
         let damage = 0;
+        let randomNum = Math.floor(Math.random() * 5) + 1;
         function toggleInventory() {
             $("#inventory").fadeToggle(500); 
         }
@@ -34,8 +35,8 @@
         
         
         function showInfo(fishName, fishPrice, fishSize, event) {
-        	 console.log("Fish Size: ", fishSize); 
-        	var clickX = event.pageX; 
+            console.log("Fish Size: ", fishSize); 
+            var clickX = event.pageX; 
             var clickY = event.pageY;
             let selected = fishName;
            
@@ -50,47 +51,20 @@
                     type: 'POST',
                     data: { f_name: fishName, f_price: fishPrice, f_size: fishSize },
                     success: function(response) {
-                    	$.ajax({
-                    	    url: '/game/sellFish',
-                    	    type: 'POST',
-                    	    data: { f_name: fishName, f_price: fishPrice, f_size: fishSize },
-                    	    success: function(response) {
-                    	   
-                    	        $.ajax({
-                    	            url: '/game/getAllInventory',
-                    	            type: 'GET',
-                    	            success: function(response) {
-                    	            	console.log("인벤토리 목록delete 갱신:", response); 
-                    	                userMoney += fishPrice * (fishSize / 30);
-                    	                $("#userMoney").html("💵 " + userMoney);
-                    	                
-                    	                $("#shop-money").html("💵 " + userMoney);
-                    	                $("#userMoney").append("<button id='sell-btn' class='sell-btn'>🚚</button>");
+                    	
+                    	fishName = fishName.trim();
+                       console.log("사이즈" + fishSize);
+                       console.log("이름" + fishName);
+                       fishName = fishName.trim();
+                       var fishId = "#catched-fish-" + fishName + fishSize;
+                       console.log("삭제할 ID: ", fishId); 
+                       $(fishId).remove();
 
-                    	                $("#status").html(
-                    	                    "<div class='sell-msg'>" +
-                    	                    "<br>" + fishName + "(이)가 판매되었습니다!<br>" +
-                    	                    "<br>판매가: " + Math.floor(fishPrice * (fishSize / 30)) +
-                    	                    "<br><div class='sellMoney'><br>💵 " + Math.floor(userMoney) +
-                    	                    "</div>" +
-                    	                    "</div>"
-                    	                );
-                    	     
-                    	            
-                    	            },
-                    	            error: function(xhr, status, error) {
-                    	                console.error("인벤토리 목록 갱신 실패", error);
-                    	            }
-                    	        });
-                    	    },
-                    	    error: function(xhr, status, error) {
-                    	        console.error("인벤토리 삭제 추가 실패", error);
-                    	    }
-                    	});
-
+                        $("#fish-img-" + fishName + fishSize).remove();
+                        updateInventory(fishPrice, fishSize, fishName);
                     },
                     error: function(xhr, status, error) {
-                        console.error("인벤토리 삭제 추가 실패", error);
+                        console.error("인벤토리 삭제 실패", error);
                     }
                 });
             }
@@ -120,6 +94,34 @@
             $("#info-modal").fadeIn(500); 
         }
 
+        function updateInventory(fishPrice, fishSize, fishName) {
+            $.ajax({
+                url: '/game/getAllInventory',
+                type: 'GET',
+                success: function(response) {
+                    console.log("판매 후 인벤토리 목록 갱신:", response); 
+          
+                    userMoney += Math.floor( fishPrice * (fishSize / 30));
+                    $("#userMoney").html("💵 " + userMoney);
+                    $("#shop-money").html("💵 " + userMoney);
+                    $("#userMoney").append("<button id='sell-btn' class='sell-btn'>🚚</button>");
+           
+                    $("#status").html(
+                        "<div class='sell-msg'>" +
+                        "<br><span class = 'blue'>" + fishName + "</span>(이)가 판매되었습니다!<br>" +
+                        "<br>판매가: <span class = 'gold'>" + Math.floor(fishPrice * (fishSize / 30)) +
+                        "</span><br><div class='sellMoney'><br>💵 " + Math.floor(userMoney) +
+                        "</div>" +
+                        "</div>"
+                    );
+                },
+                error: function(xhr, status, error) {
+                    console.error("판매 후 인벤토리 목록 갱신 실패", error);
+                }
+            });
+        }
+
+
         function closeInfo() {
             $("#info-modal").fadeOut(500, function() { 
                 $(this).remove(); 
@@ -133,10 +135,12 @@
             damage += rodDamage;
             if (userMoney >= rodPrice) {
                 userMoney -= rodPrice;
+                $("#userMoney").html("💵 " + userMoney);
+                $("#shop-money").html("💵 " + userMoney);
                 updateShop(rodName, rodPrice, rodDamage);
-                $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚시대를 구입했습니다!</h3>");
+                $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚싯대를 구입했습니다!</h3>");
                 $("#damage-td").html("💪전투력 : " + rodDamage);
-                $("#rod-td").html(rodName + "낚시대 착용중");
+                $("#rod-td").html(rodName + "낚싯대 착용중");
             } else {
                 $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉</h3>");
             }
@@ -150,23 +154,30 @@
            damage += rodDamage;
             if (userMoney >= rodPrice) {
                 userMoney -= rodPrice;
+                $("#userMoney").html("💵 " + userMoney);
+                $("#shop-money").html("💵 " + userMoney);
                 updateShop(rodName, rodPrice, rodDamage);
-                $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚시대를 구입했습니다!</h3>");
+                $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚싯대를 구입했습니다!</h3>");
                 $("#damage-td").html("💪전투력 : " + rodDamage);
-                $("#rod-td").html(rodName + "낚시대 착용중");
+                $("#rod-td").html(rodName + "낚싯대 착용중");
             } else {
-                $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉</h3>");
+                $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉🙉</h3>");
             }
         }
 
         function buyLotto() {
             if (userMoney >= 5000) {
                 userMoney -= 5000;
-                let RandomMoney = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
+            
+                let RandomMoney = Math.floor(Math.random() * (10000 - 0 + 1)) + 1000;
                 userMoney += RandomMoney;
+                $("#userMoney").html("💵 " + userMoney);
+                $("#shop-money").html("💵 " + userMoney);
+                
                 $("#status").html("<h3>럭키비키 😽 <span class='green'>" + RandomMoney + "</span>원을 얻었습니다!</h3>");
+                
             } else {
-                $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉</h3>");
+                $("#status").html("<h3><span class='gold'>탕진</span>하신 것 같은데요!?</h3>");
             }
         }
 
@@ -178,12 +189,14 @@
 
             if (userMoney >= rodPrice) {
                 userMoney -= rodPrice;
+                $("#userMoney").html("💵 " + userMoney);
+                $("#shop-money").html("💵 " + userMoney);
                 updateShop(rodName, rodPrice, rodDamage);
-                $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚시대를 구입했습니다! (데미지: " + rodDamage + ")</h3>");
+                $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚싯대를 구입했습니다! (데미지: " + rodDamage + ")</h3>");
                 $("#damage-td").html("💪전투력 : " + rodDamage);
-                $("#rod-td").html(rodName + "낚시대 착용중");
+                $("#rod-td").html(rodName + "낚싯대 착용중");
             } else {
-                $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉</h3>");
+                $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉🙉🙉</h3>");
             }
         }
 
@@ -198,31 +211,32 @@
 
             if(userMoney > 10000){
             	updateShop(rodName, rodPrice, rodDamage);
-            	$("#status").html("<h3><span class = 'gold'>"+rodName +"</span> 낚시대를 구입했습니다!</h3>");
+            	$("#status").html("<h3><span class = 'gold'>"+rodName +"</span> 낚싯대를 구입했습니다!</h3>");
             	$("#damage-td").html("💪전투력 : " + rodDamage);
-            	$("#rod-td").html(rodName + "낚시대 착용중");
+            	$("#rod-td").html(rodName + "낚싯대 착용중");
      
                 }else{
-                	$("#status").html("<h3><span class = 'green'>돈</span>이 부족합니다🙉</h3>");
+                	$("#status").html("<h3><span class = 'green'>돈</span>이 부족합니다🙉🙉🙉🙉</h3>");
                 }
         }
 
         function updateShop(rodName,rodPrice, rodDamage) {
 
             $.ajax({
-                url: '/buyRod',
+                url: '/game/buyRod',
                 type: 'POST',
                 data: { r_name: rodName, r_price: rodPrice, r_damage : rodDamage },
                 success: function(response) {
               
                     userMoney -= rodPrice;
+                    console.log("유저 돈 " + userMoney);
                     $("#userMoney").html("💵 " + userMoney);
                     $("#shop-money").html("💵 " + userMoney);
                     $("#status").html(
                         "<div class='sell-msg'>" +
-                        "<img src = 'resources/img/" + rodName+  "'>" + 
-                        "<br>" + rodName + "(이)가 구입되었습니다!<br>" +
-                        "<br>판매가: " + Math.floor(fishPrice * (fishSize / 30)) +
+                        "<img src='resources/img/" + rodName + ".png' width='50px' height='50px'>" + 
+                        "<br>" + "<h4><span class = 'blue'>" + rodName+ "</span></h4>" + "낚싯대가 구입되었습니다!<br>" +
+                        "<br>구매가: " + "<h4><span class = 'red'>" + rodPrice+ "</span></h4>" +
                         "<br><div class='sellMoney'><br>💵 " + Math.floor(userMoney) +
                         "</div>" +
                         "</div>"
@@ -257,7 +271,22 @@
 
             
             
+            $.ajax({
+                url: '/game/getAllInventory', 
+                type: 'GET',
+                
+                success: function(response) {
+               
+               
             
+                  
+                
+              
+                },
+                error: function(xhr, status, error) {
+                    console.error("인벤토리 목록 갱신 실패", error);
+                }
+            });
 
             $(document).keydown(function(e) {
                 switch (e.keyCode) {
@@ -308,7 +337,7 @@
                         if (e.keyCode === 32 && !isFishing && !canFightFishing) { 
                             isFishing = true;
                             $("#down-img").attr("src", "resources/img/fishing.png");
-                            $("#status").html("<h3>🐟🐠🐡🐟🐠🐡</h3>");
+                            $("#status").html("<h3 class = 'fish-typing'>🐟🐠🐡🐟🐠🐡</h3>");
 
                             let randomTime = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000;
 
@@ -365,46 +394,65 @@
                                                             clearInterval(intervalId);
                                                             intervalId = null; 
                                                             $("#fight-fishing").css("display", "none");
-                                                            let randomNumber = Math.floor(Math.random() * (70 - 30 + 1)) + 30;
+                                                           
+                                               
                                                             let randomNum = Math.floor(Math.random() * 5) + 1;
-                                                            $.getJSON("fish.searchJSON?f_no=" + randomNum, function(zxc) {
-                                                                $.each(zxc.fish, function(i, f) {
-                                                                    $("#status").html("<h3>" + "<span class='blue'>" + f.f_name + "</span>" + "획득!" + " 💰<span class = 'gold'>" + f.f_price + "</span>" + " 크기 : " + randomNumber + "</h3>");
-                                                                    $.ajax({
-                                                                        url: '/game/insertInventory',
-                                                                        type: 'POST',
-                                                                        data: { f_name: f.f_name, f_price: f.f_price , f_size : randomNumber},
-                                                                        success: function(response) {
-                                                                        	  console.log("Insert Inventory 성공:", response);
-                                                                            $.ajax({
-                                                                                url: '/game/getAllInventory', 
-                                                                                type: 'GET',
+
+                                                            $.ajax({
+                                                                url: "fish.searchJSON?f_no=" + randomNum, 
+                                                                type: "GET",
+                                                                success: function(zxc) {
+                                                                    $.each(zxc.fish, function(i, f) {
+                                                                        let randomNumber = Math.floor(Math.random() * (70 - 30 + 1)) + 30;
+
+                                                                        $("#status").html("<h3>" + "<span class='blue'>" + f.f_name + "</span>" + "획득!" + " 💰<span class = 'gold'>" + f.f_price + "</span>" + " 크기 : " + randomNumber + "</h3>");
+                                                                        
+                                                                
+                                                                        $.ajax({
+                                                                            url: '/game/insertInventory',
+                                                                            type: 'POST',
+                                                                            data: { f_name: f.f_name, f_price: f.f_price, f_size: randomNumber },
+                                                                            success: function(response) {
+                                                                                console.log("Insert Inventory 성공:", response);
                                                                                 
-                                                                                success: function(response) {
-                                                                                	console.log("물고기 사이즈:",  randomNumber); 
-                                                                                  
-                                                                                    $(".fish-img").css("width",  randomNumber);
-                                                                                    $(".fish-img").css("height",  randomNumber);
-                                                                                    $(".catched-fish").css("border", "none");
-                                                                                    $("#added-td").append(
-                                                                                        "<img id='catched-fish-" + f.f_name + "' class='catched-fish' src='resources/img/" + f.f_name + ".png' onclick='showInfo(\"" + f.f_name + "\", \"" + f.f_price + "\", \"" +  randomNumber + "\", event)' />"
-                                                                                    );
-                                                                                    console.log("추가된 이미지:", '#catched-fish-' + f.f_name +  f.f_price + f.f_size ); 
-                                                                                    $("#catched-fish-" + f.f_name).css("border", "yellow 2px solid");
-                                                                                    $("#catched-fish-" + f.f_name).css("width", randomNumber + "px");
-                                                                                    $("#catched-fish-" + f.f_name).css("height", randomNumber + "px");
-                                                                                },
-                                                                                error: function(xhr, status, error) {
-                                                                                    console.error("인벤토리 목록 갱신 실패", error);
-                                                                                }
-                                                                            });
-                                                                        },
-                                                                        error: function(xhr, status, error) {
-                                                                            console.error("인벤토리 항목 추가 실패", error);
-                                                                        }
+                                                                            
+                                                                                $.ajax({
+                                                                                    url: '/game/getAllInventory', 
+                                                                                    type: 'GET',
+                                                                                    success: function(response) {
+                                                                                        console.log("물고기 사이즈:", randomNumber); 
+
+                                                                                        $(".fish-img").css("width", randomNumber);
+                                                                                        $(".fish-img").css("height", randomNumber);
+                                                                                        $(".catched-fish").css("border", "none");
+
+                                                                                        $("#added-td").append(
+                                                                                        	    "<img id='catched-fish-" + f.f_name + randomNumber+ "' class='catched-fish' src='resources/img/" + f.f_name + ".png' onclick='showInfo(\"" + f.f_name + "\", \"" + f.f_price + "\", \"" + randomNumber + "\", event)' />"
+                                                                                        	);
+
+
+                                                                                        console.log("추가된 이미지:", '#catched-fish-' + f.f_name + randomNumber); 
+
+                                                                                        $("#catched-fish-" + f.f_name).css("border", "yellow 2px solid");
+                                                                                        $("#catched-fish-" + f.f_name).css("width", randomNumber + "px");
+                                                                                        $("#catched-fish-" + f.f_name).css("height", randomNumber + "px");
+                                                                                    },
+                                                                                    error: function(xhr, status, error) {
+                                                                                        console.error("인벤토리 목록 갱신 실패", error);
+                                                                                    }
+                                                                                });
+                                                                            },
+                                                                            error: function(xhr, status, error) {
+                                                                                console.error("인벤토리 항목 추가 실패", error);
+                                                                            }
+                                                                        });
                                                                     });
-                                                                });
+                                                                },
+                                                                error: function(xhr, status, error) {
+                                                                    console.error("물고기 검색 실패", error);
+                                                                }
                                                             });
+
                                                         }
 
                                                     }, 600);
@@ -529,10 +577,13 @@
                     <tr> 
                 </c:if>
           <td class='" + "catched" + "'>
-    <img class="fish-img" id="fish-img" src="resources/img/${f.f_name}.png" 
-         style="width: ${f.f_size}px; height: ${f.f_size}px"
-         onclick="showInfo('${f.f_name}', '${f.f_price}', '${f.f_size}', event)" />
-         
+   <div id = "fish-img">
+  <img class="fish-img" id="fish-img-${f.f_name}${f.f_size}" 
+    src="resources/img/${f.f_name}.png" 
+    style="width: ${f.f_size}px; height: ${f.f_size}px"
+    onclick="showInfo('${f.f_name}', '${f.f_price}', '${f.f_size}', event)" />
+
+        </div> 
          
 
 </td>
@@ -555,7 +606,7 @@
 </div>
 <div id="UserInfo" class="UserInfo" style="display:none;">
 <table id = "UserInfoTbl" class = "UserInfoTbl">
-<tr><div class = "user-title">‍</div></tr>
+<tr><img src = "resources/img/down.png" width = "90px" height = "110px" class = "Profile"></tr>
 <tr>
 <td class = "user-td">
     User : <span class = "id">${ID}</span><br><br>
@@ -565,7 +616,7 @@
 
 <tr>
 <td class = "user-td" id = "rod-td">
-    낚시대가 없네요💸 <br><br><br><br>
+    <div class = "user-text">장비 없음💸 </div> <br><br><br><br>
 </td>
 </tr>
 
@@ -573,7 +624,7 @@
 
 <tr>
 <td class = "user-td" id = "damage-td">
-    전투력 : 0 <br><br><br><br>
+   <div class = "user-text"> 전투력 : 0 </div><br><br><br><br>
 </td>
 </tr>
 
@@ -591,17 +642,17 @@
 <div class = "rod-section">
 <td>
 
-<img class = "fishing-rod" src = "resources/img/낡은.png" onclick = "buyOld();"/><p>낡은 낚시대 </p><p>3000₩</p></td></div>
+<img class = "fishing-rod" src = "resources/img/낡은.png" onclick = "buyOld();"/><p>낡은 낚싯대 </p><p>3000₩</p></td></div>
 <div class = "rod-section">
- <td><img class = "fishing-rod" src = "resources/img/좋은.png" onclick = "buyGood();"/><p>좋은 낚시대 </p><p>5000₩</p></td>
+ <td><img class = "fishing-rod" src = "resources/img/좋은.png" onclick = "buyGood();"/><p>좋은 낚싯대 </p><p>5000₩</p></td>
   </div>
   <div class = "rod-section">
-  <td> <img class = "fishing-rod" src = "resources/img/대단한.png" onclick = "buyAwesome();"/><p>대단한 낚시대 </p><p>8000₩</p></td>
+  <td> <img class = "fishing-rod" src = "resources/img/대단한.png" onclick = "buyAwesome();"/><p>대단한 낚싯대 </p><p>8000₩</p></td>
 </div>
 <div class = "rod-section">
 <td>
 
-<img  class = "fishing-rod" src = "resources/img/이상한.png" onclick = "buyStrange();"/><p>이상한 낚시대 </p><p>10000₩</p></td> </div></tr>
+<img  class = "fishing-rod" src = "resources/img/이상한.png" onclick = "buyStrange();"/><p>이상한 낚싯대 </p><p>10000₩</p></td> </div></tr>
 
 
 <tr><td><img src = "resources/img/luckybox.png" class = "lotto-img" onclick = "buyLotto();"/>

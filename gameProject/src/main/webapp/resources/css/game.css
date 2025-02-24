@@ -109,6 +109,28 @@ body {
 .blue{
 	color : #578FCA;
 }
+.red{
+	color : #A04747;
+}
+.fish-typing {
+    font-size: 2rem;
+    animation: typing 5s ease-in-out infinite alternate;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+#damage-td{
+	margin-top : 50px;
+}
+@keyframes typing {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
 h3 {
     font-family: "Hi Melody", serif;
     font-size: 50px;
@@ -233,6 +255,11 @@ opacity : 0.5;
 	margin-top : 10px;
 
 }
+.Profile{
+	
+	margin-left : 100px;
+	background-color : #FBFBFB;
+}
 .Shop{
 	margin-top:-50px;
 	margin-bottom : 100px;
@@ -343,6 +370,9 @@ opacity : 0.5;
     margin-left: 10px;
     font-size: 18px;
     
+}
+.white{
+	color : white;
 }
 
 .inventory .close-btn {
