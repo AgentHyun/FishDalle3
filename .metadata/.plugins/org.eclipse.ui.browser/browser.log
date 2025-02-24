@@ -383,3 +383,16 @@
 2월 21, 2025 16:05:03.71 [1120:1696:0221/160503.715:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 21, 2025 16:12:02.57 [1120:1696:0221/161202.579:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 21, 2025 17:40:23.89 [1120:1136:0221/174023.892:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
+
+2월 24, 2025 08:56:43.77 NEW SESSION
+2월 24, 2025 08:56:43.77 [1828:7236:0224/085643.777:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 24, 2025 08:56:43.86 Created TensorFlow Lite XNNPACK delegate for CPU.
+2월 24, 2025 08:57:11.12 [1828:7236:0224/085711.128:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 24, 2025 09:03:46.62 Created TensorFlow Lite XNNPACK delegate for CPU.
+2월 24, 2025 09:03:46.77 [12488:9356:0224/090346.775:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 24, 2025 09:04:14.94 [12488:9356:0224/090414.947:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 24, 2025 09:05:14.37 [12488:9356:0224/090514.377:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 24, 2025 09:06:43.04 [12488:8732:0224/090643.044:ERROR:service_client.cc(36)] Unexpected on_device_model service disconnect: The device's GPU is not supported.
+2월 24, 2025 09:07:10.37 [12488:9356:0224/090710.378:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 24, 2025 09:10:48.90 [12488:9356:0224/091048.906:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 24, 2025 09:17:40.56 [12488:9356:0224/091740.560:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT

@@ -42,6 +42,9 @@ public void setF_size(int f_size) {
 	this.f_size = f_size;
 }
 	
-	
+@Override
+public String toString() {
+    return "Inventory [f_name=" + f_name + ", f_price=" + f_price + ", f_size=" + f_size + "]";
+}
 	
 }

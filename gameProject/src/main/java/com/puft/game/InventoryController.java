@@ -13,7 +13,8 @@ public class InventoryController {
 
     @Autowired
     private InventoryDAO iDAO;  
-
+    @Autowired
+    private fishDAO fDAO;
 
     @RequestMapping(value = "/getAllInventory", method = RequestMethod.GET)
     public String viewInventory(HttpServletRequest req) {
@@ -42,9 +43,10 @@ public class InventoryController {
     @RequestMapping(value = "/sellFish", method = RequestMethod.POST)
     public String sellFish(@RequestParam("f_name") String f_name, @RequestParam("f_price") int f_price,@RequestParam("f_size") int f_size, HttpServletRequest req) {
         try {
-           
+        	iDAO.sellFish(f_name, f_price, f_size); 
+        	fDAO.getAllFish(req);
         	iDAO.selectAllInventory(req);
-        	iDAO.sellFish(f_name, f_price, f_size);  
+        	 
 
             
               

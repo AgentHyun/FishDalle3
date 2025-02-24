@@ -17,18 +17,14 @@ public class LoginController {
 	fishDAO fDAO;
 	@Autowired
 	InventoryDAO iDAO;
-	@RequestMapping(value = "/loginComplete", method = RequestMethod.GET)
-	public String loginComplete(HttpServletRequest req) {
-		fDAO.getAllFish(req);
-		iDAO.selectAllInventory(req);
-		return "main";
-	}
+
 	
 	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String Login(Login l, HttpServletRequest req) {
 		lDAO.login(l, req);
-		
+		fDAO.getAllFish(req);
+		iDAO.selectAllInventory(req);
 		return "main";
 	}
 	

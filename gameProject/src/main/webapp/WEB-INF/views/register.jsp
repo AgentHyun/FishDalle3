@@ -17,7 +17,7 @@ ID : <input name = u_id class = "login-input-id" autofocus = "autofocus"><br>
 PW : <input name = u_pw class = "login-input-pw" autofocus = "autofocus" type = "password">
 <br>
 
-<button class = "signUp">SIGN UP</button>
+<button class = "Signup-btn">SIGN UP</button>
 </form>
 
 

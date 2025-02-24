@@ -41,7 +41,7 @@ public class InventoryDAO {
             for (Inventory item : inventoryList) {
                 inventoryCount.put(item.getF_name(), inventoryCount.getOrDefault(item.getF_name(), 0) + 1);
             }
-
+            System.out.println("Inventory List: " + inventoryList);
             req.setAttribute("inventoryList", inventoryList);
             req.setAttribute("inventoryCount", inventoryCount);
         } catch (Exception e) {

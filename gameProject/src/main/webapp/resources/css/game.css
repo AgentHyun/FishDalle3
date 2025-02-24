@@ -101,7 +101,7 @@ body {
     height: 150px;
     background-color: white;
     margin-top: 600px;
-    background-image: url('../img/Background.png');
+    background-image: url('../img/status.png');
     border-radius: 10%;
     border: 2px solid #4DA1A9;
     box-shadow: 2px 2px 2px #4DA1A9;
@@ -158,6 +158,26 @@ h4 {
     display: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
+
+.Shop{
+	    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+	
+}
+.fishing-rod{
+	width : 50px;
+	height : 50px;
+}
 .inventory h2 {
     text-align: center;
     font-size: 40px;
@@ -172,6 +192,39 @@ h4 {
     margin-top : 60px;
     font-size: 30px;
     
+}
+.UserInfoTbl td {
+    text-align: center;
+    margin-top : 60px;
+    font-size: 30px;
+    
+}
+.lotto{
+	
+	background-color : ;
+	
+}
+.lotto-img{
+	width : 80px;
+	height : 80px;
+	
+}
+.lotto-img:hover{
+opacity : 0.5;
+    cursor:pointer;
+}
+
+.fishing-rod:hover{
+	opacity : 0.5;
+	    cursor:pointer;
+}
+
+.ShopTbl
+{   text-align : center;
+	border : 2px solid white;
+	box-shadow: 2px 2px 2px white;
+	margin-left : 140px;
+	margin-top : 10px;
 }
 .Money{
 	margin-top : -10px;
@@ -221,7 +274,7 @@ h4 {
 .inventory-tbl tr {
     display: flex;
     flex-direction: row;
-    border = none; 
+
    
 }
 .white{
@@ -240,11 +293,9 @@ h4 {
     flex-direction: row; 
     justify-content: center;
     align-items: center;
-    border = none;
+    border : none;
 }
-.catching-tbl{
-	 
-}
+
 .fish-img {
     margin: 5px;
     width: 30px; 

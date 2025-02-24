@@ -11,19 +11,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div class= "login-section">
+<div class="login-section">
+    <form action="/game/login" method="post">
+        ID : <input name="u_id" class="login-input-id" autofocus="autofocus"><br>
+        PW : <input name="u_pw" class="login-input-pw" type="password">
+        <br>
 
-<form action = "/game/login" method = "post">
-ID : <input name = u_id class = "login-input-id" autofocus = "autofocus"><br>
-PW : <input name = u_pw class = "login-input-pw" autofocus = "autofocus" type = "password">
-<br>
-
-
-<button class = "login-btn">LOG IN</button>
-</form>
-<form action = "/game/signupGo" method = "post">
-<button class = "Login-btn">SIGN UP</button>
-</form>
+        <div class="button-container">
+            <button class="login-btn">LOG IN</button>
+            <button class="Signup-btn" formaction="/game/signupGo">SIGN UP</button>
+        </div>
+    </form>
 </div>
+
 </body>
 </html>
