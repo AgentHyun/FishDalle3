@@ -15,5 +15,5 @@ f_size number (5) not null
 
 );
 select * from userInventory;
-insert into userInventory values('고등어', 1000, 30);
+insert into userInventory values('복어', 5000, 40);
 DROP TABLE userInventory CASCADE CONSTRAINTS;

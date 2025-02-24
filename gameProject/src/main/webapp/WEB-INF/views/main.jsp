@@ -235,8 +235,8 @@
                     $("#status").html(
                         "<div class='sell-msg'>" +
                         "<img src='resources/img/" + rodName + ".png' width='50px' height='50px'>" + 
-                        "<br>" + "<h4><span class = 'blue'>" + rodName+ "</span></h4>" + "낚싯대가 구입되었습니다!<br>" +
-                        "<br>구매가: " + "<h4><span class = 'red'>" + rodPrice+ "</span></h4>" +
+                        "<br>" + "<span class = 'blue'>" + rodName+ "</span>" + "낚싯대가 구입되었습니다!<br>" + //css추가
+                        "<br>구매가: " + "<span class = 'red'>" + rodPrice+ "</span>" +
                         "<br><div class='sellMoney'><br>💵 " + Math.floor(userMoney) +
                         "</div>" +
                         "</div>"
