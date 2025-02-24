@@ -25,6 +25,9 @@ public class LoginController {
 		lDAO.login(l, req);
 		fDAO.getAllFish(req);
 		iDAO.selectAllInventory(req);
+		String id = req.getParameter("u_id");
+		req.setAttribute("ID", id);
+		
 		return "main";
 	}
 	

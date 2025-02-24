@@ -199,9 +199,13 @@ h4 {
     font-size: 30px;
     
 }
-.lotto{
+
+.gold{
+	color : #FFC145;
 	
-	background-color : ;
+}
+.id{
+	color : #9694FF;
 	
 }
 .lotto-img{
@@ -212,11 +216,13 @@ h4 {
 .lotto-img:hover{
 opacity : 0.5;
     cursor:pointer;
+    background-color :#FAC67A;
 }
 
 .fishing-rod:hover{
-	opacity : 0.5;
+	opacity : 0.8;
 	    cursor:pointer;
+	    background-color :#FAC67A;
 }
 
 .ShopTbl
@@ -225,6 +231,11 @@ opacity : 0.5;
 	box-shadow: 2px 2px 2px white;
 	margin-left : 140px;
 	margin-top : 10px;
+
+}
+.Shop{
+	margin-top:-50px;
+	margin-bottom : 100px;
 }
 .Money{
 	margin-top : -10px;
@@ -240,6 +251,11 @@ opacity : 0.5;
 .sell-msg{
 	text-align : center;
 	font-size : 15pt;
+	
+}
+.green{
+	
+	color : #5CB338;
 	
 }
 .sell-money{
@@ -277,6 +293,7 @@ opacity : 0.5;
 
    
 }
+
 .white{
 	color : white;
 }

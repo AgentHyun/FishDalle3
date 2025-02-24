@@ -14,7 +14,8 @@
     <script type="text/javascript">
         let sellMode = false;
         let userMoney = 0;
-
+        let rodDamage = 0;
+        let damage = 0;
         function toggleInventory() {
             $("#inventory").fadeToggle(500); 
         }
@@ -25,11 +26,19 @@
         function toggleShop() {
             $("#Shop").fadeToggle(500); 
         }
+        
+        
+      
+
+        
+        
+        
         function showInfo(fishName, fishPrice, fishSize, event) {
         	 console.log("Fish Size: ", fishSize); 
         	var clickX = event.pageX; 
             var clickY = event.pageY;
             let selected = fishName;
+           
             if ($("#info-modal").length > 0) {
                 $("#info-modal").remove();
                 return;
@@ -117,6 +126,113 @@
             });
         }
 
+        function buyOld() {
+            const rodName = "낡은";
+            const rodPrice = 3000;
+            rodDamage = 1;
+            damage += rodDamage;
+            if (userMoney >= rodPrice) {
+                userMoney -= rodPrice;
+                updateShop(rodName, rodPrice, rodDamage);
+                $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚시대를 구입했습니다!</h3>");
+                $("#damage-td").html("💪전투력 : " + rodDamage);
+                $("#rod-td").html(rodName + "낚시대 착용중");
+            } else {
+                $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉</h3>");
+            }
+        }
+
+        
+        function buyGood() {
+            const rodName = "좋은";
+            const rodPrice = 5000;
+           rodDamage = 2;
+           damage += rodDamage;
+            if (userMoney >= rodPrice) {
+                userMoney -= rodPrice;
+                updateShop(rodName, rodPrice, rodDamage);
+                $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚시대를 구입했습니다!</h3>");
+                $("#damage-td").html("💪전투력 : " + rodDamage);
+                $("#rod-td").html(rodName + "낚시대 착용중");
+            } else {
+                $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉</h3>");
+            }
+        }
+
+        function buyLotto() {
+            if (userMoney >= 5000) {
+                userMoney -= 5000;
+                let RandomMoney = Math.floor(Math.random() * (10000 - 1000 + 1)) + 1000;
+                userMoney += RandomMoney;
+                $("#status").html("<h3>럭키비키 😽 <span class='green'>" + RandomMoney + "</span>원을 얻었습니다!</h3>");
+            } else {
+                $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉</h3>");
+            }
+        }
+
+        function buyAwesome() {
+            const rodName = "대단한";
+            const rodPrice = 8000;
+            damage += rodDamage;
+           rodDamage = Math.floor(Math.random() * (5 - 3 + 1)) + 3; // 3~5 랜덤
+
+            if (userMoney >= rodPrice) {
+                userMoney -= rodPrice;
+                updateShop(rodName, rodPrice, rodDamage);
+                $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚시대를 구입했습니다! (데미지: " + rodDamage + ")</h3>");
+                $("#damage-td").html("💪전투력 : " + rodDamage);
+                $("#rod-td").html(rodName + "낚시대 착용중");
+            } else {
+                $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉</h3>");
+            }
+        }
+
+
+        function buyStrange() {
+
+            const rodName = "이상한";
+            const rodPrice = 10000;
+            damage += rodDamage;
+            rodDamage = Math.floor(Math.random() * (5 - 3 + 1)) + 3;
+           
+
+            if(userMoney > 10000){
+            	updateShop(rodName, rodPrice, rodDamage);
+            	$("#status").html("<h3><span class = 'gold'>"+rodName +"</span> 낚시대를 구입했습니다!</h3>");
+            	$("#damage-td").html("💪전투력 : " + rodDamage);
+            	$("#rod-td").html(rodName + "낚시대 착용중");
+     
+                }else{
+                	$("#status").html("<h3><span class = 'green'>돈</span>이 부족합니다🙉</h3>");
+                }
+        }
+
+        function updateShop(rodName,rodPrice, rodDamage) {
+
+            $.ajax({
+                url: '/buyRod',
+                type: 'POST',
+                data: { r_name: rodName, r_price: rodPrice, r_damage : rodDamage },
+                success: function(response) {
+              
+                    userMoney -= rodPrice;
+                    $("#userMoney").html("💵 " + userMoney);
+                    $("#shop-money").html("💵 " + userMoney);
+                    $("#status").html(
+                        "<div class='sell-msg'>" +
+                        "<img src = 'resources/img/" + rodName+  "'>" + 
+                        "<br>" + rodName + "(이)가 구입되었습니다!<br>" +
+                        "<br>판매가: " + Math.floor(fishPrice * (fishSize / 30)) +
+                        "<br><div class='sellMoney'><br>💵 " + Math.floor(userMoney) +
+                        "</div>" +
+                        "</div>"
+                    );
+                },
+                error: function(xhr, status, error) {
+                    console.error("구입 실패", error);
+                }
+            });
+        }
         $(function() {
             let topPosition = 500;
             let leftPosition = 1000;
@@ -139,6 +255,9 @@
                 }
             });
 
+            
+            
+            
 
             $(document).keydown(function(e) {
                 switch (e.keyCode) {
@@ -178,7 +297,7 @@
                 let sectionLeft = sectionPosition.left;
                 let sectionWidth = $(".fishing-section").width();
                 let sectionHeight = $(".fishing-section").height();
-
+                
                 if (charLeft + 50 > sectionLeft && charLeft < sectionLeft + sectionWidth && charTop + 50 > sectionTop && charTop < sectionTop + sectionHeight) {
                     if (!isFishingZone) {
                         isFishingZone = true;
@@ -307,13 +426,15 @@
                 }
             });
 
+            
+          
             $(document).keydown(function(e) {
                 if (canFightFishing) {
                     if (e.keyCode === 65) { 
-                        gagePercent += 3; 
+                        gagePercent = gagePercent + 3 + rodDamage; 
                         $("#akey").css("opacity", "0.5");
                     } else if(e.keyCode === 83 && !isFishing){
-                        gagePercent += 3;
+                        gagePercent =  gagePercent + 3 + rodDamage;
                         $("#skey").css("opacity", "0.5");
                     }
                 }
@@ -434,17 +555,25 @@
 </div>
 <div id="UserInfo" class="UserInfo" style="display:none;">
 <table id = "UserInfoTbl" class = "UserInfoTbl">
-<tr><div class = "user-title">Status 🧑‍</div></tr>
+<tr><div class = "user-title">‍</div></tr>
 <tr>
 <td class = "user-td">
-    User : <br><br>
+    User : <span class = "id">${ID}</span><br><br>
 </td>
 
 </tr>
 
 <tr>
-<td class = "user-td">
-    전투력 : 3 <br><br><br><br>
+<td class = "user-td" id = "rod-td">
+    낚시대가 없네요💸 <br><br><br><br>
+</td>
+</tr>
+
+
+
+<tr>
+<td class = "user-td" id = "damage-td">
+    전투력 : 0 <br><br><br><br>
 </td>
 </tr>
 
@@ -456,28 +585,31 @@
 
 <div id="Shop" class="Shop" style="display:none;">
 <table id = "ShopTbl" class = "ShopTbl">
-<tr><div class = "user-title">Shop👩‍💼‍</div></tr>
+<tr><div class = "user-title">Shop👩‍</div></tr>
 <div class = "shop-section">
 <tr>
 <div class = "rod-section">
 <td>
 
-<img class = "fishing-rod" src = "resources/img/낡은.png"/><p>낡은 낚시대 </p><p>3000₩</p></td></div>
+<img class = "fishing-rod" src = "resources/img/낡은.png" onclick = "buyOld();"/><p>낡은 낚시대 </p><p>3000₩</p></td></div>
 <div class = "rod-section">
- <td><img class = "fishing-rod" src = "resources/img/좋은.png"/><p>좋은 낚시대 </p><p>5000₩</p></td>
+ <td><img class = "fishing-rod" src = "resources/img/좋은.png" onclick = "buyGood();"/><p>좋은 낚시대 </p><p>5000₩</p></td>
   </div>
   <div class = "rod-section">
-  <td> <img class = "fishing-rod" src = "resources/img/대단한.png"/><p>대단한 낚시대 </p><p>8000₩</p></td>
+  <td> <img class = "fishing-rod" src = "resources/img/대단한.png" onclick = "buyAwesome();"/><p>대단한 낚시대 </p><p>8000₩</p></td>
 </div>
 <div class = "rod-section">
 <td>
 
-<img  class = "fishing-rod" src = "resources/img/이상한.png"/><p>이상한 낚시대 </p><p>10000₩</p></td> </div></tr>
+<img  class = "fishing-rod" src = "resources/img/이상한.png" onclick = "buyStrange();"/><p>이상한 낚시대 </p><p>10000₩</p></td> </div></tr>
 
 
-<tr><td><img src = "resources/img/luckybox.png" class = "lotto-img">
+<tr><td><img src = "resources/img/luckybox.png" class = "lotto-img" onclick = "buyLotto();"/>
 <p>🍀5000₩🍀</p>
-</td></tr>
+</td>
+
+
+</tr>
 
 <tr><td  id = "shop-money"> </td></tr>
 

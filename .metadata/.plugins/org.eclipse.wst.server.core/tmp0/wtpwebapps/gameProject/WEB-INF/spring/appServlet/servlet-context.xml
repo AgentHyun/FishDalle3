@@ -46,6 +46,7 @@
 				<beans:value>classpath:fishMapper.xml</beans:value>
 				<beans:value>classpath:inventoryMapper.xml</beans:value>
 				<beans:value>classpath:loginMapper.xml</beans:value>
+	            <beans:value>classpath:rodMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
