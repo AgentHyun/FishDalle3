@@ -75,7 +75,6 @@ INDEX VERSION 1.131+C:\Users\sdedu\Desktop\Spring\.metadata\.plugins\org.eclipse
 771254758.index
 1440318846.index
 3525899063.index
-1566383487.index
 90442198.index
 1079863005.index
 2333602946.index

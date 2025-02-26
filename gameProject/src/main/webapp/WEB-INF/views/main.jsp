@@ -16,13 +16,13 @@
         let userMoney = 0;
         let rodDamage = 0;
         let damage = 0;
-        let randomNum = Math.floor(Math.random() * 5) + 1;
+
         function toggleInventory() {
             $("#inventory").fadeToggle(500); 
         }
 
         function toggleUserInfo() {
-            $("#inventory").fadeToggle(500); 
+            $("#UserInfo").fadeToggle(500); 
         }
         function toggleShop() {
             $("#Shop").fadeToggle(500); 
@@ -44,31 +44,7 @@
                 $("#info-modal").remove();
                 return;
             }
-
-            if (sellMode) {
-                $.ajax({
-                    url: '/game/sellFish',
-                    type: 'POST',
-                    data: { f_name: fishName, f_price: fishPrice, f_size: fishSize },
-                    success: function(response) {
-                    	
-                    	fishName = fishName.trim();
-                       console.log("사이즈" + fishSize);
-                       console.log("이름" + fishName);
-                       fishName = fishName.trim();
-                       var fishId = "#catched-fish-" + fishName + fishSize;
-                       console.log("삭제할 ID: ", fishId); 
-                       $(fishId).remove();
-
-                        $("#fish-img-" + fishName + fishSize).remove();
-                        updateInventory(fishPrice, fishSize, fishName);
-                    },
-                    error: function(xhr, status, error) {
-                        console.error("인벤토리 삭제 실패", error);
-                    }
-                });
-            }
-
+          
             var infoHtml = 
                 '<div class="info-modal" id="info-modal" style="' +
                     'display: none;' + 
@@ -83,14 +59,43 @@
                     'box-shadow: 0px 0px 10px rgba(0,0,0,0.3); ' + 
                     'font-family: \'Jua\', sans-serif;">' +
                     '<h2 class="info-title">' + fishName + '</h2>' +
-                    '<p class="gold"> 💵' + Math.floor(fishPrice * (fishSize / 30)) + ' ₩ </p>' +
+                    '<p class = "mustard"> 💵' + Math.floor(fishPrice * (fishSize / 30)) + ' ₩ </p>' +
                     '<p class="size"> size: ' + fishSize + '</p>' + 
                     '<br><button class="close-btn" onclick="closeInfo()">✖️</button>' +
                 '</div>';
 
-            if (!sellMode) {
+            if (sellMode) {
+                $.ajax({
+                    url: '/game/sellFish',
+                    type: 'POST',
+                    data: { f_name: fishName, f_price: fishPrice, f_size: fishSize },
+                    success: function(response) {
+                        fishName = fishName.trim();
+                        console.log("사이즈" + fishSize);
+                        console.log("이름" + fishName);
+                        var fishId = "#catched-fish-" + fishName + fishSize;
+                        console.log("삭제할 ID: ", fishId);
+                        $(fishId).remove();
+                        $("#fish-img-" + fishName + fishSize).remove();
+                        updateInventory(fishPrice, fishSize, fishName);
+                       
+                     
+                        console.log("Sell Mode after AJAX: " + sellMode);
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("인벤토리 삭제 실패", error);
+                    }
+                });
+            }else{
+
                 $("body").append(infoHtml);
             }
+
+
+         
+
+
+            
             $("#info-modal").fadeIn(500); 
         }
 
@@ -100,20 +105,20 @@
                 type: 'GET',
                 success: function(response) {
                     console.log("판매 후 인벤토리 목록 갱신:", response); 
-          
+                   
                     userMoney += Math.floor( fishPrice * (fishSize / 30));
                     $("#userMoney").html("💵 " + userMoney);
                     $("#shop-money").html("💵 " + userMoney);
-                    $("#userMoney").append("<button id='sell-btn' class='sell-btn'>🚚</button>");
+      
            
                     $("#status").html(
-                        "<div class='sell-msg'>" +
-                        "<br><span class = 'blue'>" + fishName + "</span>(이)가 판매되었습니다!<br>" +
-                        "<br>판매가: <span class = 'gold'>" + Math.floor(fishPrice * (fishSize / 30)) +
-                        "</span><br><div class='sellMoney'><br>💵 " + Math.floor(userMoney) +
-                        "</div>" +
-                        "</div>"
-                    );
+                    	    "<div class='sell-msg'>" +
+                    	    "<br><img src='resources/img/Fish/" + fishName + ".png' width='30' height='30'>(이)가 판매되었습니다!<br>" +
+             
+                    	    "<div class='sellMoney'><br>💵 " + Math.floor(userMoney) + "</div>" +
+                    	    "</div>"
+                    	);
+
                 },
                 error: function(xhr, status, error) {
                     console.error("판매 후 인벤토리 목록 갱신 실패", error);
@@ -241,6 +246,7 @@
                         "</div>" +
                         "</div>"
                     );
+                    $("#fight-fishing").append("<h4>userDmg</h4>");
                 },
                 error: function(xhr, status, error) {
                     console.error("구입 실패", error);
@@ -259,19 +265,19 @@
 
             $("#userMoney").html("💵 " + userMoney);
             $("#shop-money").html("💵 " + userMoney);
-            $("#userMoney").append("<button id = 'sell-btn' class='sell-btn'>🚚</button>");
+            $("#sell-button").html("<button id = 'sell-btn' class='sell-btn'>🚚</button>");
+           
             $("#sell-btn").click(function() {
-                sellMode = !sellMode;
-                console.log("Sell Mode is now: " + sellMode); 
-                if (sellMode) {
-                    $("#sell-btn").css("background-color", "#B6FFA1");
+               console.log(sellMode);
+            	if (sellMode) {  
+                	sellMode = false; 
+                	$("#sell-btn").css("background-color", "transparent");
+                   
                 } else {
-                    $("#sell-btn").css("background-color", "");
+                	sellMode = true;
+                	  $("#sell-btn").css("background-color", "#B6FFA1"); 
                 }
             });
-
-            
-            
             $.ajax({
                 url: '/game/getAllInventory', 
                 type: 'GET',
@@ -337,7 +343,7 @@
                     }
 
                     $(document).one('keydown', function(e) {
-                        if (e.keyCode === 32 && !isFishing && !canFightFishing) { 
+                        if ((e.keyCode === 32 || e.keyCode === 69) && !isFishing && !canFightFishing) { 
                             isFishing = true;
                             $("#down-img").attr("src", "resources/img/fishing.png");
                             $("#status").css("background-color", "#578FCA");
@@ -355,7 +361,7 @@
                             $("#status").css("background-size", "100%");
                             $("#status").css("background-repeat", "no-repeat;");
 
-                      
+                            
                         
 
                             let randomTime = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000;
@@ -374,6 +380,7 @@
                                     }, 200, function() {
                                         $(document).one('keydown', function(e) {
                                             if (e.keyCode === 32) { 
+                                                $("#fight-fishing").append("<h4>0</h4>");
                                                 isFishing = false; 
                                                 canFightFishing = true; 
                                                 $("#fight-fishing").css("display", "block");
@@ -415,7 +422,7 @@
                                                             $("#fight-fishing").css("display", "none");
                                                            
                                                
-                                                            let randomNum = Math.floor(Math.random() * 10) + 1;
+                                                            let randomNum = Math.floor(Math.random() * 12) + 1;
 
                                                             $.ajax({
                                                                 url: "fish.searchJSON?f_no=" + randomNum, 
@@ -445,7 +452,8 @@
                                                                                         $(".fish-img").css("height", randomNumber);
                                                                                         $(".catched-fish").css("border", "none");
 
-                                                                                        $("#added-td").append(
+                                                                                        
+                                                                                        $("#fish-list").append(
                                                                                         	    "<img id='catched-fish-" + f.f_name + randomNumber+ "' class='catched-fish' src='resources/img/Fish/" + f.f_name + ".png' onclick='showInfo(\"" + f.f_name + "\", \"" + f.f_price + "\", \"" + randomNumber + "\", event)' />"
                                                                                         	);
 
@@ -453,8 +461,8 @@
                                                                                         console.log("추가된 이미지:", '#catched-fish-' + f.f_name + randomNumber); 
 
                                                                                         $("#catched-fish-" + f.f_name).css("border", "yellow 2px solid");
-                                                                                        $("#catched-fish-" + f.f_name).css("width", randomNumber + "px");
-                                                                                        $("#catched-fish-" + f.f_name).css("height", randomNumber + "px");
+                                                                                        $("#catched-fish-" + f.f_name + randomNumber).css("width", randomNumber + "px");
+                                                                                        $("#catched-fish-" + f.f_name + randomNumber).css("height", randomNumber + "px");
                                                                                     },
                                                                                     error: function(xhr, status, error) {
                                                                                         console.error("인벤토리 목록 갱신 실패", error);
@@ -577,6 +585,7 @@
     </div>
     <img id="akey" src="resources/img/akey.png"> 
     <img id="skey" src="resources/img/skey.png">
+    
 </div>
 <div class="left-bar">
     <div class="inventory-menu" onclick="toggleInventory()">🎣 <br>인벤토리<strong>[E]</strong></div>
@@ -587,8 +596,8 @@
 <div id="inventory" class="inventory" style="display:none;">
     <table class="inventory-tbl" id="inventory-tbl">
         <tr><th><h2>Inventory 🎒</h2></th></tr>
-        <c:set var="itemsPerRow" value="4" /> <!-- 한 줄에 표시할 아이템 수 -->
-        <c:set var="itemCount" value="0" /> <!-- 아이템 카운트 초기화 -->
+        <c:set var="itemsPerRow" value="4" /> 
+        <c:set var="itemCount" value="0" /> 
 
         <tr>
             <c:forEach var="f" items="${inventoryList}">
@@ -600,7 +609,7 @@
                     
                     <tr> 
                 </c:if>
-          <td class='" + "catched" + "'>
+          <td class='" + "catched" + "' id = "fish-list">
    <div id = "fish-img">
   <img class="fish-img" id="fish-img-${f.f_name}${f.f_size}" 
     src="resources/img/Fish/${f.f_name}.png" 
@@ -624,6 +633,8 @@
         <tr>
         <td id = "userMoney">
         
+        </td>
+        <td id = "sell-button">
         </td>
         </tr>
     </table>

@@ -109,7 +109,7 @@ body {
 }
 .blue{
 	color : #578FCA;
-font-size : 30px;
+font-size : 35pt;
 	font-weight: 200;
 	
 }
@@ -246,10 +246,7 @@ h4 {
     
 }
 
-.gold{
-	color : #FFC145;
-	
-}
+
 .id{
 	color : #9694FF;
 	
@@ -320,7 +317,7 @@ opacity : 0.5;
 .gold{
 	font-weight : 300%;
    color : #FFB200;
-   font-size : 20pt;
+   font-size : 30pt;
 }
 
 .inventory-tbl {
@@ -332,7 +329,7 @@ opacity : 0.5;
 }
 .info-title{
 	
-	color : #536493;
+	color : #0A3981;
 }
 .info-modal{
 	background-color: #89A8B2;
@@ -350,11 +347,13 @@ opacity : 0.5;
 .white{
 	color : white;
 }
+.mustard{
+	color : #FCC737;
+}
 .catched-fish{
 	
 	border : 2px #FFEB00 solid;
-	width : 30px;
-	height : 30px;
+	
 	
 }
 

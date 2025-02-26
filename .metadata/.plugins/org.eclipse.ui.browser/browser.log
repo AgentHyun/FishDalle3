@@ -406,3 +406,4 @@
 2월 26, 2025 09:07:38.62 [7820:11024:0226/090738.626:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 26, 2025 09:15:28.87 [7820:11024:0226/091528.875:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 26, 2025 11:04:42.20 [7820:7740:0226/110442.203:ERROR:interface_endpoint_client.cc(725)] Message 5 rejected by interface blink.mojom.WidgetHost
+2월 26, 2025 13:15:53.33 [7820:11024:0226/131553.332:ERROR:connection_factory_impl.cc(483)] ConnectionHandler failed with net error: -2
