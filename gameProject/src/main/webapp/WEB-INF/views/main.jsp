@@ -31,7 +31,9 @@
         
       
 
-        
+      
+
+       
         
         
         function showInfo(fishName, fishPrice, fishSize, event) {
@@ -138,7 +140,7 @@
             const rodPrice = 3000;
             rodDamage = 1;
             damage += rodDamage;
-            if (userMoney >= rodPrice) {
+            if ((userMoney - rodPrice) >= 0) {
                 userMoney -= rodPrice;
                 $("#userMoney").html("💵 " + userMoney);
                 $("#shop-money").html("💵 " + userMoney);
@@ -157,7 +159,7 @@
             const rodPrice = 5000;
            rodDamage = 2;
            damage += rodDamage;
-            if (userMoney >= rodPrice) {
+            if ((userMoney - rodPrice) >= 0) {
                 userMoney -= rodPrice;
                 $("#userMoney").html("💵 " + userMoney);
                 $("#shop-money").html("💵 " + userMoney);
@@ -171,7 +173,7 @@
         }
 
         function buyLotto() {
-            if (userMoney >= 5000) {
+            if ((userMoney - 5000) >= 0) {
                 userMoney -= 5000;
             
                 let RandomMoney = Math.floor(Math.random() * (10000 - 0 + 1)) + 1000;
@@ -192,7 +194,7 @@
             damage += rodDamage;
            rodDamage = Math.floor(Math.random() * (5 - 3 + 1)) + 3; // 3~5 랜덤
 
-            if (userMoney >= rodPrice) {
+            if ((userMoney - rodPrice) >= 0) {
                 userMoney -= rodPrice;
                 $("#userMoney").html("💵 " + userMoney);
                 $("#shop-money").html("💵 " + userMoney);
@@ -214,7 +216,7 @@
             rodDamage = Math.floor(Math.random() * (5 - 3 + 1)) + 3;
            
 
-            if(userMoney > 10000){
+            if((userMoney - rodPrice) >= 0){
             	updateShop(rodName, rodPrice, rodDamage);
             	$("#status").html("<h3><span class = 'gold'>"+rodName +"</span> 낚싯대를 구입했습니다!</h3>");
             	$("#damage-td").html("💪전투력 : " + rodDamage);
@@ -233,7 +235,7 @@
                 data: { r_name: rodName, r_price: rodPrice, r_damage : rodDamage },
                 success: function(response) {
               
-                    userMoney -= rodPrice;
+                   
                     console.log("유저 돈 " + userMoney);
                     $("#userMoney").html("💵 " + userMoney);
                     $("#shop-money").html("💵 " + userMoney);
@@ -357,8 +359,11 @@
                             $("#status").append("<h3 class = 'fish-typing3'>    🦀</h3>");
                             $("#status").append("<h3 class = 'fish-typing3'>           🦐</h3>");
                             $("#status").append("<h3 class = 'fish-typing3'>🐡</h3></div>");
-                            $("#status").css("background-image", "url('resources/img/background/fishing-sea.jpg')");
-                            $("#status").css("background-size", "100%");
+                            //$("#status").css("background-image", "url('resources/img/background/fishing-sea.jpg')");
+                           $("#status").css("background-image", "url('resources/img/background/sea-in.jpg')");
+                            $("#status").css("background-color", "#0A3981");
+                            
+                            $("#status").css("background-size", "cover");
                             $("#status").css("background-repeat", "no-repeat;");
 
                             
@@ -533,39 +538,80 @@
             let isInventory = false;
             let isUserInfo = false;
             let isShop = false;
-            $(document).keydown(function(e) {
-                if (e.keyCode == 69) { 
+            let isColor = false;
+            
+            $(document).keydown(function(e) { 
+            	console.log('isShop:', isShop, 'isColor:', isColor);
+
+            	if (e.keyCode === 69) {  
                     isInventory = !isInventory;
-                    if (isInventory) {
-                        $("#inventory").fadeIn();
-                    } else {
-                        $("#inventory").fadeOut();
-                    }
+                    $("#inventory").fadeToggle(500);
                 }
-          
-                if (e.keyCode == 85) {  
+
+                if (e.keyCode === 85) {  
                     isUserInfo = !isUserInfo;
-                    if (isUserInfo) {
-                        $("#UserInfo").fadeIn();
+                    $("#UserInfo").fadeToggle(500);
+                }
+
+                if (e.keyCode === 80) {  
+                    isShop = !isShop;
+                    if (isShop) {
+                        $("#Shop").fadeIn(500);
+                       
+                        $("#Color-Section").fadeOut(500);
                     } else {
-                        $("#UserInfo").fadeOut();
+                        $("#Shop").fadeOut(500);
                     }
                 }
-             
-                    if (event.keyCode === 80) { 
-                    	isShop = !isShop;
-                    	if(isShop){
-                    	   $("#Shop").fadeIn();
-                    	}
-                    else {
-                        $("#Shop").fadeOut();
-                    }
-                    }
-             
-            
-               
-            
+
+                if (e.keyCode === 67) {  
+                	let randomColor = Math.floor(Math.random() * 12) + 1;
+                	$("#status").css("background-image", "none");
+                
+                	if(randomColor === 1){
+                		$("#status").css("background-color", "#D3F1DF");
+                	}else if(randomColor === 2){
+                		$("#status").css("background-color", "#D4EBF8");
+                	}else  if(randomColor === 3){
+                		$("#status").css("background-color", "#FFE6A9");
+                	}else  if(randomColor === 4){
+                		$("#status").css("background-color", "#B3C8CF");
+                	}else  if(randomColor === 5){
+                		$("#status").css("background-color", "#CA7373");
+                	}else  if(randomColor === 6){
+                		$("#status").css("background-color", "#FBD288");
+                	}else  if(randomColor === 7){
+                		$("#status").css("background-color", "#F0C1E1");
+                	}else  if(randomColor === 8){
+                		$("#status").css("background-color", "#C6E7FF");
+                	}else  if(randomColor === 9){
+                		$("#status").css("background-color", "#F3F3E0");
+                	}else  if(randomColor === 10){
+                		$("#status").css("background-color", "#FFB38E");
+                	}else  if(randomColor === 11){
+                		$("#status").css("background-color", "#FFE3E3");
+                	}else  if(randomColor === 12){
+                		$("#status").css("background-color", "#A5B68D");
+                	} 
+                	
+                	
+                }
+                if (e.keyCode === 84) {  
+                    $("h3").css("color", "black");
+                }
+                if (e.keyCode === 84) {  
+                    $("h3").css("color", "black");
+                }
+                if (e.keyCode === 90) {  
+                    $("#status").css("background-image", "url('resources/img/background/status.png')");
+                }
+                
+                
+                
+                
             });
+
+
             
          
             
@@ -591,6 +637,9 @@
     <div class="inventory-menu" onclick="toggleInventory()">🎣 <br>인벤토리<strong>[E]</strong></div>
         <div class="inventory-menu" onclick="toggleUserInfo()">🧑‍ <br>유저<strong>[U]</strong></div>
           <div class="inventory-menu" onclick="toggleShop()">🏬‍ <br>상점<strong>[P]</strong></div>
+           <div class="inventory-menu" onclick="toggleColor()">🎨‍ <br>상태창 색상<strong>[C]</strong></div>
+                   <div class="inventory-menu" onclick="toggleColor()">↩️‍ <br>상태창 복구<strong>[Z]</strong></div>
+                   <div class="inventory-menu" onclick="toggleColor()">↩️‍ <br>글자 색상<strong>[T]</strong></div>
 </div>
 
 <div id="inventory" class="inventory" style="display:none;">
@@ -701,9 +750,16 @@
 
 
 </div>
-
-
 </table>
+
+
+
+
+
+
+
+
+
 
 </div>
 

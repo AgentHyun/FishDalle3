@@ -30,7 +30,6 @@
 <fullyQualifiedTypeName name="com.puft.feb171.Fruit.FruitMapper"/>
 <fullyQualifiedTypeName name="com.puft.feb181.error.ErrorDAO"/>
 <fullyQualifiedTypeName name="com.puft.feb181.error.ErrorMapper"/>
-<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
 <fullyQualifiedTypeName name="java.net.URL"/>
 <fullyQualifiedTypeName name="javax.net.ssl.HttpsURLConnection"/>
 <fullyQualifiedTypeName name="java.io.InputStream"/>
@@ -55,4 +54,5 @@
 <fullyQualifiedTypeName name="com.puft.game.Rod"/>
 <fullyQualifiedTypeName name="com.puft.game.InventoryDAO"/>
 <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+<fullyQualifiedTypeName name="javax.servlet.http.HttpServletResponse"/>
 </qualifiedTypeNameHistroy>

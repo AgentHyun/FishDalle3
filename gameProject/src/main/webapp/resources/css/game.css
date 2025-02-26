@@ -205,7 +205,9 @@ h4 {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
+
 .Shop{
+	   z-index : 99;
 	    position: fixed;
     left: 50%;
     top: 50%;
