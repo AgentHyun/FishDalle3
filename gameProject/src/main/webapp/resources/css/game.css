@@ -101,22 +101,46 @@ body {
     height: 150px;
     background-color: white;
     margin-top: 600px;
-    background-image: url('../img/status.png');
+    background-image: url('../img/background/status.png');
     border-radius: 10%;
     border: 2px solid #4DA1A9;
     box-shadow: 2px 2px 2px #4DA1A9;
+
 }
 .blue{
 	color : #578FCA;
+font-size : 30px;
+	font-weight: 200;
+	
 }
 .red{
+	font-size : 30px;
+	font-weight: 200;
 	color : #A04747;
 }
 .fish-typing {
+
     font-size: 2rem;
+    animation: typing 4s ease-in-out infinite alternate;
+    white-space: nowrap;
+    display: inline-block;
+}
+.fish-typing2{
+    font-size: 1rem;
+    animation: typing 3s ease-in-out infinite alternate;
+    white-space: nowrap;
+    display: inline-block;
+  
+}
+.fish-typing3 {
+    font-size: 1.5rem;
     animation: typing 5s ease-in-out infinite alternate;
     white-space: nowrap;
     display: inline-block;
+    margin-top : -30px;
+}
+.catching-msg{
+	margin : -25px;
 }
 
 #damage-td{
@@ -278,7 +302,7 @@ opacity : 0.5;
 .sell-msg{
 	text-align : center;
 	font-size : 15pt;
-	
+	margin-top : -20px;
 }
 .green{
 	
@@ -294,7 +318,9 @@ opacity : 0.5;
 }
 
 .gold{
+	font-weight : 300%;
    color : #FFB200;
+   font-size : 20pt;
 }
 
 .inventory-tbl {

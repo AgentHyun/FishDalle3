@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <title>Fishing Game</title>
     <link rel="stylesheet" href="resources/css/game.css">
-    <script type="text/javascript" src="resources/jQuery.js"></script>
+    <script type="text/javascript" src="resources/js/jQuery.js"></script>
 
     <script type="text/javascript">
         let sellMode = false;
@@ -248,6 +248,7 @@
             });
         }
         $(function() {
+        	
             let topPosition = 500;
             let leftPosition = 1000;
             let gagePercent = 30; 
@@ -330,6 +331,8 @@
                 if (charLeft + 50 > sectionLeft && charLeft < sectionLeft + sectionWidth && charTop + 50 > sectionTop && charTop < sectionTop + sectionHeight) {
                     if (!isFishingZone) {
                         isFishingZone = true;
+                        $("#fishing-section").css("border","4px solid #578FCA");
+                        $("#fishing-section-h4").css("color","#D1F8EF");
                         $("#status").html("<h3><span class='space-bar'> SpaceBar</span>누르면 낚시 시작</h3>");
                     }
 
@@ -337,7 +340,23 @@
                         if (e.keyCode === 32 && !isFishing && !canFightFishing) { 
                             isFishing = true;
                             $("#down-img").attr("src", "resources/img/fishing.png");
-                            $("#status").html("<h3 class = 'fish-typing'>🐟🐠🐡🐟🐠🐡</h3>");
+                            $("#status").css("background-color", "#578FCA");
+                            $("#status").html("");
+                            
+                            $("#status").append("<div class = 'catching-msg'><h3 class = 'fish-typing'>🐟</h3>");
+                            
+                            $("#status").append("<h3 class = 'fish-typing2'>🦑</h3>");
+                            $("#status").append("<h3 class = 'fish-typing2'>🐠</h3>");
+                     
+                            $("#status").append("<h3 class = 'fish-typing3'>    🦀</h3>");
+                            $("#status").append("<h3 class = 'fish-typing3'>           🦐</h3>");
+                            $("#status").append("<h3 class = 'fish-typing3'>🐡</h3></div>");
+                            $("#status").css("background-image", "url('resources/img/background/fishing-sea.jpg')");
+                            $("#status").css("background-size", "100%");
+                            $("#status").css("background-repeat", "no-repeat;");
+
+                      
+                        
 
                             let randomTime = Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000;
 
@@ -396,7 +415,7 @@
                                                             $("#fight-fishing").css("display", "none");
                                                            
                                                
-                                                            let randomNum = Math.floor(Math.random() * 5) + 1;
+                                                            let randomNum = Math.floor(Math.random() * 10) + 1;
 
                                                             $.ajax({
                                                                 url: "fish.searchJSON?f_no=" + randomNum, 
@@ -404,8 +423,8 @@
                                                                 success: function(zxc) {
                                                                     $.each(zxc.fish, function(i, f) {
                                                                         let randomNumber = Math.floor(Math.random() * (70 - 30 + 1)) + 30;
-
-                                                                        $("#status").html("<h3>" + "<span class='blue'>" + f.f_name + "</span>" + "획득!" + " 💰<span class = 'gold'>" + f.f_price + "</span>" + " 크기 : " + randomNumber + "</h3>");
+                                                                        $("#status").css("background-image", "url('resources/img/background/status.png')");
+                                                                        $("#status").html("<h3>" + "<span class='blue'>" + f.f_name + "</span>" + "획득!" + " 💰<span class = 'gold'>" + Math.floor(f.f_price * (randomNumber / 30)) + "</span>" + " 크기 : " + randomNumber + "</h3>");
                                                                         
                                                                 
                                                                         $.ajax({
@@ -427,7 +446,7 @@
                                                                                         $(".catched-fish").css("border", "none");
 
                                                                                         $("#added-td").append(
-                                                                                        	    "<img id='catched-fish-" + f.f_name + randomNumber+ "' class='catched-fish' src='resources/img/" + f.f_name + ".png' onclick='showInfo(\"" + f.f_name + "\", \"" + f.f_price + "\", \"" + randomNumber + "\", event)' />"
+                                                                                        	    "<img id='catched-fish-" + f.f_name + randomNumber+ "' class='catched-fish' src='resources/img/Fish/" + f.f_name + ".png' onclick='showInfo(\"" + f.f_name + "\", \"" + f.f_price + "\", \"" + randomNumber + "\", event)' />"
                                                                                         	);
 
 
@@ -462,6 +481,9 @@
                                     });
                                 });
                             }, randomTime);
+                        
+                        isFishing = false;
+                    
                         }
                     });
                 } else {
@@ -469,6 +491,8 @@
                         isFishingZone = false;
                         $("#down-img").css("width", "50px");
                         $("#down-img").css("height", "50px");
+                        $("#fishing-section").css("border","2px solid white");
+                        $("#fishing-section-h4").css("color","white");
                         $("#status").html("<h3>낚시하기 좋은 날씨네요 🌞</h3>");
                     }
                 }
@@ -544,7 +568,7 @@
 <body>
 
 <img id="down-img" class="down-img" src="resources/img/down.png" alt="다운 이미지">
-<div class="fishing-section"><h4>낚시 가능 구역</h4></div>
+<div class="fishing-section" id = "fishing-section"><h4 id = "fishing-section-h4">낚시 가능 구역</h4></div>
 <div class="status" id="status">           </div>
 <div class="price" id="price"></div>
 <div class="fight-fishing" id="fight-fishing">
@@ -579,7 +603,7 @@
           <td class='" + "catched" + "'>
    <div id = "fish-img">
   <img class="fish-img" id="fish-img-${f.f_name}${f.f_size}" 
-    src="resources/img/${f.f_name}.png" 
+    src="resources/img/Fish/${f.f_name}.png" 
     style="width: ${f.f_size}px; height: ${f.f_size}px"
     onclick="showInfo('${f.f_name}', '${f.f_price}', '${f.f_size}', event)" />
 
@@ -642,20 +666,20 @@
 <div class = "rod-section">
 <td>
 
-<img class = "fishing-rod" src = "resources/img/낡은.png" onclick = "buyOld();"/><p>낡은 낚싯대 </p><p>3000₩</p></td></div>
+<img class = "fishing-rod" src = "resources/img/rod/낡은.png" onclick = "buyOld();"/><p>낡은 낚싯대 </p><p>3000₩</p></td></div>
 <div class = "rod-section">
- <td><img class = "fishing-rod" src = "resources/img/좋은.png" onclick = "buyGood();"/><p>좋은 낚싯대 </p><p>5000₩</p></td>
+ <td><img class = "fishing-rod" src = "resources/img/rod/좋은.png" onclick = "buyGood();"/><p>좋은 낚싯대 </p><p>5000₩</p></td>
   </div>
   <div class = "rod-section">
-  <td> <img class = "fishing-rod" src = "resources/img/대단한.png" onclick = "buyAwesome();"/><p>대단한 낚싯대 </p><p>8000₩</p></td>
+  <td> <img class = "fishing-rod" src = "resources/img/rod/대단한.png" onclick = "buyAwesome();"/><p>대단한 낚싯대 </p><p>8000₩</p></td>
 </div>
 <div class = "rod-section">
 <td>
 
-<img  class = "fishing-rod" src = "resources/img/이상한.png" onclick = "buyStrange();"/><p>이상한 낚싯대 </p><p>10000₩</p></td> </div></tr>
+<img  class = "fishing-rod" src = "resources/img/rod/이상한.png" onclick = "buyStrange();"/><p>이상한 낚싯대 </p><p>10000₩</p></td> </div></tr>
 
 
-<tr><td><img src = "resources/img/luckybox.png" class = "lotto-img" onclick = "buyLotto();"/>
+<tr><td><img src = "resources/img/rod/luckybox.png" class = "lotto-img" onclick = "buyLotto();"/>
 <p>🍀5000₩🍀</p>
 </td>
 

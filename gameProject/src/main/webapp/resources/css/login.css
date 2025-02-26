@@ -57,9 +57,17 @@
 	
 	
 }
+.Signup-btn:hover{
+	  opacity : 0.7;
+	
+	
+}
 
 .login-btn:hover {
   background-color: white;
+}
+.isLogin{
+	color : #001A6E;
 }
 
 .login-input-id {

@@ -20,8 +20,13 @@
         <div class="button-container">
             <button class="login-btn">LOG IN</button>
             <button class="Signup-btn" formaction="/game/signupGo">SIGN UP</button>
-        </div>
+            </div>
+     
+        
     </form>
+    <div class = "isLogin">
+    <h4>${isLogin }</h4>
+</div>
 </div>
 
 </body>
