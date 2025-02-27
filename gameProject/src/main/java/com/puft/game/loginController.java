@@ -22,8 +22,7 @@ public class LoginController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String Login(Login l, HttpServletRequest req) {
 		lDAO.login(l, req);
-		fDAO.getAllFish(req);
-		iDAO.selectAllInventory(req);
+		
 		String id = req.getParameter("u_id");
 		req.setAttribute("ID", id);
 		 if(req.getAttribute("isLogin").equals("로그인 성공")) {
@@ -37,8 +36,10 @@ public class LoginController {
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.POST)
 	public String signup(Login l, HttpServletRequest req) {
-		lDAO.signUp(l, req);
+		
 		req.setAttribute("lp", "login.jsp");
+		lDAO.signUp(l, req);
+	
 		return "landing";
 	}
 	

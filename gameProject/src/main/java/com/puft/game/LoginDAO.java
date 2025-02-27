@@ -44,7 +44,7 @@ public class LoginDAO {
 		   l.setU_pw(req.getParameter("u_pw"));
 		   
 		   if (ss.getMapper(LoginMapper.class).signUp(l) == 1) {
-				req.setAttribute("r", "가입 성공");
+				req.setAttribute("isLogin", "회원가입 성공");
 			}
 		   
 		   

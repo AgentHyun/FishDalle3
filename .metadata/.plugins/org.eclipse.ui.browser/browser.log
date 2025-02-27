@@ -418,3 +418,11 @@
 2월 27, 2025 09:15:47.16 [4132:7996:0227/091547.163:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 27, 2025 09:58:57.72 [4132:8464:0227/095857.726:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
 2월 27, 2025 11:23:24.03 [4132:8464:0227/112324.032:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
+2월 27, 2025 12:40:14.02 [4132:8464:0227/124014.028:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
+2월 27, 2025 12:42:33.03 Created TensorFlow Lite XNNPACK delegate for CPU.
+2월 27, 2025 12:42:33.14 [12684:11428:0227/124233.144:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 27, 2025 12:42:56.94 [12684:11428:0227/124256.948:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 27, 2025 12:43:38.18 [12684:11428:0227/124338.181:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 27, 2025 12:45:25.93 [12684:11428:0227/124525.933:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 27, 2025 12:49:01.69 [12684:11428:0227/124901.690:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 27, 2025 12:55:37.81 [12684:11428:0227/125537.819:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
