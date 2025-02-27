@@ -49,7 +49,7 @@ body {
     opacity: 0.5;
 }
 
-.left-bar {
+.right-bar {
     background-color: rgba(0, 0, 0, 0.8);
     margin-left: 100px;
     height: 500px;
@@ -139,6 +139,22 @@ font-size : 35pt;
     display: inline-block;
     margin-top : -30px;
 }
+
+.fish-typing4 {
+
+    font-size: 2rem;
+    animation: typing 0.7s ease-in-out infinite alternate;
+    white-space: nowrap;
+    display: inline-block;
+}
+.fish-typing5 {
+
+    font-size: 2rem;
+    animation: typing 1s ease-in-out infinite alternate;
+    white-space: nowrap;
+    display: inline-block;
+}
+
 .catching-msg{
 	margin : -25px;
 }

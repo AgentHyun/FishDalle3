@@ -17,6 +17,10 @@
         let rodDamage = 0;
         let damage = 0;
 
+        
+        
+        
+        // onclick 이벤트
         function toggleInventory() {
             $("#inventory").fadeToggle(500); 
         }
@@ -27,15 +31,26 @@
         function toggleShop() {
             $("#Shop").fadeToggle(500); 
         }
-        
-        
+      function toggleRecovery(){
+    	  $("#status").css("background-image", "url('resources/img/background/status.png')");
+    	  
+      }  
+      function toggleBlack(){
+    	  
+    	  $("h3").css("color", "black");
+      }
+      function toggleWhite(){
+    	  $("h3").css("color", "white");
+    	  
+      }  
+     
       
 
       
 
        
         
-        
+        //인벤토리 내 물고기 클릭시 showInfo 메소드 실행
         function showInfo(fishName, fishPrice, fishSize, event) {
             console.log("Fish Size: ", fishSize); 
             var clickX = event.pageX; 
@@ -66,6 +81,9 @@
                     '<br><button class="close-btn" onclick="closeInfo()">✖️</button>' +
                 '</div>';
 
+                
+            //인벤토리 내 택배 아이콘을 누르면 sellMode가 되고
+            //sellMode인 상태에서 물고기를 누르면 showInfor가 아닌 판매 로직 진행
             if (sellMode) {
                 $.ajax({
                     url: '/game/sellFish',
@@ -79,10 +97,12 @@
                         console.log("삭제할 ID: ", fishId);
                         $(fishId).remove();
                         $("#fish-img-" + fishName + fishSize).remove();
+                        
+                        //판매 성공 후 인벤토리 갱신
                         updateInventory(fishPrice, fishSize, fishName);
                        
                      
-                        console.log("Sell Mode after AJAX: " + sellMode);
+     
                     },
                     error: function(xhr, status, error) {
                         console.error("인벤토리 삭제 실패", error);
@@ -101,6 +121,7 @@
             $("#info-modal").fadeIn(500); 
         }
 
+        //판매 후 실행할 메소드
         function updateInventory(fishPrice, fishSize, fishName) {
             $.ajax({
                 url: '/game/getAllInventory',
@@ -108,11 +129,13 @@
                 success: function(response) {
                     console.log("판매 후 인벤토리 목록 갱신:", response); 
                    
+                    
+                    //물고기의 가격은 사이즈 별마다 다르게 책정
                     userMoney += Math.floor( fishPrice * (fishSize / 30));
                     $("#userMoney").html("💵 " + userMoney);
                     $("#shop-money").html("💵 " + userMoney);
       
-           
+                    //판매 후 메세지 출력
                     $("#status").html(
                     	    "<div class='sell-msg'>" +
                     	    "<br><img src='resources/img/Fish/" + fishName + ".png' width='30' height='30'>(이)가 판매되었습니다!<br>" +
@@ -134,12 +157,14 @@
                 $(this).remove(); 
             });
         }
-
+        
+        
+        //낚시대 구입 메소드
         function buyOld() {
             const rodName = "낡은";
             const rodPrice = 3000;
             rodDamage = 1;
-            damage += rodDamage;
+            damage += rodDamage; //유저 데미지에 구입한 낚시대의 데미지를 추가
             if ((userMoney - rodPrice) >= 0) {
                 userMoney -= rodPrice;
                 $("#userMoney").html("💵 " + userMoney);
@@ -154,6 +179,7 @@
         }
 
         
+
         function buyGood() {
             const rodName = "좋은";
             const rodPrice = 5000;
@@ -171,7 +197,7 @@
                 $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉🙉</h3>");
             }
         }
-
+        //로또 구입 메소드 가격 : 5000 (0 ~ 10000)까지 랜덤 머니 획득
         function buyLotto() {
             if ((userMoney - 5000) >= 0) {
                 userMoney -= 5000;
@@ -192,7 +218,7 @@
             const rodName = "대단한";
             const rodPrice = 8000;
             damage += rodDamage;
-           rodDamage = Math.floor(Math.random() * (5 - 3 + 1)) + 3; // 3~5 랜덤
+           rodDamage =  3; 
 
             if ((userMoney - rodPrice) >= 0) {
                 userMoney -= rodPrice;
@@ -213,7 +239,7 @@
             const rodName = "이상한";
             const rodPrice = 10000;
             damage += rodDamage;
-            rodDamage = Math.floor(Math.random() * (5 - 3 + 1)) + 3;
+            rodDamage = Math.floor(Math.random() * (5 - 3 + 1)) + 3; //이상한 낚시대의 데미지는 (3~5)
            
 
             if((userMoney - rodPrice) >= 0){
@@ -227,6 +253,7 @@
                 }
         }
 
+        //구입 요청 메소드
         function updateShop(rodName,rodPrice, rodDamage) {
 
             $.ajax({
@@ -237,6 +264,7 @@
               
                    
                     console.log("유저 돈 " + userMoney);
+                    
                     $("#userMoney").html("💵 " + userMoney);
                     $("#shop-money").html("💵 " + userMoney);
                     $("#status").html(
@@ -255,21 +283,26 @@
                 }
             });
         }
+        
+        
+        
         $(function() {
         	
             let topPosition = 500;
             let leftPosition = 1000;
-            let gagePercent = 30; 
-            let isFishing = false; 
-            let canFightFishing = false; 
-            let intervalId = null;
-            let isFishingZone = false;
+            let gagePercent = 30; //기본 게이지는 30
+            
+            
+            let isFishing = false; // 낚시 중인가? 
+            let canFightFishing = false;  // 캐스팅 중인가?(can을 잘못표시)
+            let intervalId = null; //반복 상태 관리
+            let isFishingZone = false; //Fishing존에 들어갔는가?
 
             $("#userMoney").html("💵 " + userMoney);
             $("#shop-money").html("💵 " + userMoney);
             $("#sell-button").html("<button id = 'sell-btn' class='sell-btn'>🚚</button>");
            
-            $("#sell-btn").click(function() {
+            $("#sell-btn").click(function() { //택배 아이콘 클릭시
                console.log(sellMode);
             	if (sellMode) {  
                 	sellMode = false; 
@@ -280,23 +313,20 @@
                 	  $("#sell-btn").css("background-color", "#B6FFA1"); 
                 }
             });
+            
+            //인벤토리 갱신
             $.ajax({
                 url: '/game/getAllInventory', 
                 type: 'GET',
-                
                 success: function(response) {
-               
-               
-            
-                  
-                
-              
-                },
+          },
                 error: function(xhr, status, error) {
                     console.error("인벤토리 목록 갱신 실패", error);
                 }
             });
 
+            
+            //캐릭터 이동 로직
             $(document).keydown(function(e) {
                 switch (e.keyCode) {
                     case 37:
@@ -336,8 +366,10 @@
                 let sectionWidth = $(".fishing-section").width();
                 let sectionHeight = $(".fishing-section").height();
                 
+                //fishing-section의 크기를 가져와서
                 if (charLeft + 50 > sectionLeft && charLeft < sectionLeft + sectionWidth && charTop + 50 > sectionTop && charTop < sectionTop + sectionHeight) {
                     if (!isFishingZone) {
+                    	//피싱존에 들어왔을 때
                         isFishingZone = true;
                         $("#fishing-section").css("border","4px solid #578FCA");
                         $("#fishing-section-h4").css("color","#D1F8EF");
@@ -346,6 +378,7 @@
 
                     $(document).one('keydown', function(e) {
                         if ((e.keyCode === 32 || e.keyCode === 69) && !isFishing && !canFightFishing) { 
+                        	//스페이스바를 누르면 낚시 시작
                             isFishing = true;
                             $("#down-img").attr("src", "resources/img/fishing.png");
                             $("#status").css("background-color", "#578FCA");
@@ -377,27 +410,41 @@
                                     height: "10%",
                                     opacity: 1
                                 }, 200, function() {
-                                    $("#status").html("<h3><span class='space-bar'> SpaceBar</span>누르면 낚시 시작</h3>");
+                                    $("#status").html("<h3><span class='space-bar'>Enter ⏎ </span>누르면 캐스팅 시작</h3>");
                                     $(this).stop().animate({
                                         width: "50px",
                                         height: "50px",
                                         opacity: 1
                                     }, 200, function() {
                                         $(document).one('keydown', function(e) {
-                                            if (e.keyCode === 32) { 
+                                            if (e.keyCode === 13) { //엔터키
+                                          
+                                            	 $("#status").html("");
+                                                 
+                                                 $("#status").append("<div class = 'catching-msg'><h3 class = 'fish-typing4'>🎣</h3><h3 class = 'fish-typing5'>🎣</h3>");
+                                                 
+                                                 $("#status").append("<h3 class = 'fish-typing2'>🦈 </h3>");
+                                                 $("#status").append("<h3 class = 'fish-typing2'>🐳</h3>");
+                                          
+                                                 $("#status").append("<h3 class = 'fish-typing3'>   🦑 </h3>");
+                                                 $("#status").append("<h3 class = 'fish-typing3'>       🐡    </h3>");
+                                                 $("#status").append("<h3 class = 'fish-typing3'>🐢</h3></div>");
                                                 $("#fight-fishing").append("<h4>0</h4>");
                                                 isFishing = false; 
                                                 canFightFishing = true; 
-                                                $("#fight-fishing").css("display", "block");
-                                                gagePercent = 30;
+                                                $("#fight-fishing").css("display", "block"); 
+                                                gagePercent = 30; //캐스팅 게이지 초기화
                                                 if (intervalId === null) {
                                                     intervalId = setInterval(function() {
-                                                        if (gagePercent > 0) {
+                                                        if (gagePercent > 0) { //지속적으로 게이지 5씩 감소
                                                             gagePercent -= 5; 
                                                             $("#gage").animate({
                                                                 width: gagePercent + "%" 
                                                             }, 300);
                                                         }
+                                                        
+                                                        
+                                                        //게이지 별 시각 효과
                                                         if (gagePercent <= 30) {
                                                             $("#gage").css("background-color", "red");
                                                         } else if (gagePercent <= 70) {
@@ -405,9 +452,11 @@
                                                         } else {
                                                             $("#gage").css("background-color", "green");
                                                         }
+                                                        
+                                                        
                                                         $("#fight-fishing-dmg").text(gagePercent + "%")
                                                        
-                                                        
+                                                        //물고기 놓쳤을 때
                                                         if (gagePercent <= 0) {
                                                             clearInterval(intervalId);
                                                             intervalId = null; 
@@ -418,7 +467,12 @@
                                                             gagePercent = 30;
                                                             $("#gage").css("width", gagePercent + "%");
                                                         }
+                                                        
+                                                        
+                                                        //물고기 잡았을 때
                                                         if (gagePercent >= 100) {
+                                                        	
+                                                        	
                                                             isFishing = false; 
                                                             canFightFishing = false; 
                                                             gagePercent = 30;
@@ -457,7 +511,7 @@
                                                                                         $(".fish-img").css("height", randomNumber);
                                                                                         $(".catched-fish").css("border", "none");
 
-                                                                                        
+                                                                                        //인벤토리에 id값이 각자 다른 물고기의 이미지를 추가
                                                                                         $("#fish-list").append(
                                                                                         	    "<img id='catched-fish-" + f.f_name + randomNumber+ "' class='catched-fish' src='resources/img/Fish/" + f.f_name + ".png' onclick='showInfo(\"" + f.f_name + "\", \"" + f.f_price + "\", \"" + randomNumber + "\", event)' />"
                                                                                         	);
@@ -512,13 +566,13 @@
             });
 
             
-          
+            //캐스팅 시 a키나 s키를 누르면 3씩 데미지
             $(document).keydown(function(e) {
                 if (canFightFishing) {
-                    if (e.keyCode === 65) { 
+                    if (e.keyCode === 65) { //a키
                         gagePercent = gagePercent + 3 + rodDamage; 
                         $("#akey").css("opacity", "0.5");
-                    } else if(e.keyCode === 83 && !isFishing){
+                    } else if(e.keyCode === 83){ //s키
                         gagePercent =  gagePercent + 3 + rodDamage;
                         $("#skey").css("opacity", "0.5");
                     }
@@ -540,20 +594,24 @@
             let isShop = false;
             let isColor = false;
             
+            
+            
+            
+            //우측 메뉴 단축키 이벤트
             $(document).keydown(function(e) { 
             	console.log('isShop:', isShop, 'isColor:', isColor);
 
-            	if (e.keyCode === 69) {  
+            	if (e.keyCode === 69) {  //E키
                     isInventory = !isInventory;
                     $("#inventory").fadeToggle(500);
                 }
 
-                if (e.keyCode === 85) {  
+                if (e.keyCode === 85) {   //U키
                     isUserInfo = !isUserInfo;
                     $("#UserInfo").fadeToggle(500);
                 }
 
-                if (e.keyCode === 80) {  
+                if (e.keyCode === 80) {  //P키
                     isShop = !isShop;
                     if (isShop) {
                         $("#Shop").fadeIn(500);
@@ -564,7 +622,7 @@
                     }
                 }
 
-                if (e.keyCode === 67) {  
+                if (e.keyCode === 67) {  //C키
                 	let randomColor = Math.floor(Math.random() * 12) + 1;
                 	$("#status").css("background-image", "none");
                 
@@ -596,13 +654,14 @@
                 	
                 	
                 }
-                if (e.keyCode === 84) {  
+               
+                if (e.keyCode === 84) {  //T키
                     $("h3").css("color", "black");
                 }
-                if (e.keyCode === 84) {  
-                    $("h3").css("color", "black");
+                if (e.keyCode === 87) {  //W키
+                    $("h3").css("color", "white");
                 }
-                if (e.keyCode === 90) {  
+                if (e.keyCode === 90) {  //Z키
                     $("#status").css("background-image", "url('resources/img/background/status.png')");
                 }
                 
@@ -633,13 +692,14 @@
     <img id="skey" src="resources/img/skey.png">
     
 </div>
-<div class="left-bar">
+<div class="right-bar">
     <div class="inventory-menu" onclick="toggleInventory()">🎣 <br>인벤토리<strong>[E]</strong></div>
         <div class="inventory-menu" onclick="toggleUserInfo()">🧑‍ <br>유저<strong>[U]</strong></div>
           <div class="inventory-menu" onclick="toggleShop()">🏬‍ <br>상점<strong>[P]</strong></div>
            <div class="inventory-menu" onclick="toggleColor()">🎨‍ <br>상태창 색상<strong>[C]</strong></div>
-                   <div class="inventory-menu" onclick="toggleColor()">↩️‍ <br>상태창 복구<strong>[Z]</strong></div>
-                   <div class="inventory-menu" onclick="toggleColor()">↩️‍ <br>글자 색상<strong>[T]</strong></div>
+                   <div class="inventory-menu" onclick="toggleRecovery()">↩️‍ <br>상태창 복구<strong>[Z]</strong></div>
+                   <div class="inventory-menu" onclick="toggleBlack()">⚫<br>글자 색상<strong>[T]</strong></div>
+                   <div class="inventory-menu" onclick="toggleWhite()">⚪<br>글자 색상<strong>[W]</strong></div>
 </div>
 
 <div id="inventory" class="inventory" style="display:none;">
