@@ -8,7 +8,6 @@ public class Inventory {
 	private int f_size;
 	
 public Inventory() {
-	// TODO Auto-generated constructor stub
 }
 
 public Inventory(String f_name, int f_price, int f_size) {

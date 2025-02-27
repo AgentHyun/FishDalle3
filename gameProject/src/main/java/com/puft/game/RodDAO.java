@@ -12,7 +12,6 @@ public class RodDAO {
 	SqlSession ss;
 	
 	
-	
 	 public void buyRod(String r_name, int r_price,int r_damage) {
 	        try {
 	            Rod r = new Rod();

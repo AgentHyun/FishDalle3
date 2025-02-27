@@ -15,7 +15,6 @@ public class InventoryDAO {
 
     @Autowired
     SqlSession ss;
-
  
     public void insertInventory(String f_name, int f_price,int f_size) {
         try {

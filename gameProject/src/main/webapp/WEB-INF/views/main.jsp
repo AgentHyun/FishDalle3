@@ -43,11 +43,22 @@
     	  $("h3").css("color", "white");
     	  
       }  
-     
+     function toggleNight(){
+    	  $("body").css("filter", "brightness(85%)");
+    	  $("body").css("background-image", "url('resources/img/background/lake_night.jpg')");
+    	  $("body").css("background-color", "black");
+          $("body").css("background-size", "cover");
+     }
       
 
       
+      function toggleMorning(){
+    	     $("body").css("filter", "brightness(100%)");
 
+    	  	  $("body").css("background-image", "url('resources/img/background/lake.jpg')");
+    	  	  $("body").css("background-color", "none");
+
+     }
        
         
         //인벤토리 내 물고기 클릭시 showInfo 메소드 실행
@@ -269,7 +280,7 @@
                     $("#shop-money").html("💵 " + userMoney);
                     $("#status").html(
                         "<div class='sell-msg'>" +
-                        "<img src='resources/img/" + rodName + ".png' width='50px' height='50px'>" + 
+                        "<img src='resources/img/rod/" + rodName + ".png' width='50px' height='50px'>" + 
                         "<br>" + "<span class = 'blue'>" + rodName+ "</span>" + "낚싯대가 구입되었습니다!<br>" + //css추가
                         "<br>구매가: " + "<span class = 'red'>" + rodPrice+ "</span>" +
                         "<br><div class='sellMoney'><br>💵 " + Math.floor(userMoney) +
@@ -326,7 +337,7 @@
             });
 
             
-            //캐릭터 이동 로직
+            //캐릭터 이동 이벤트
             $(document).keydown(function(e) {
                 switch (e.keyCode) {
                     case 37:
@@ -377,7 +388,7 @@
                     }
 
                     $(document).one('keydown', function(e) {
-                        if ((e.keyCode === 32 || e.keyCode === 69) && !isFishing && !canFightFishing) { 
+                        if ((e.keyCode === 32) && !isFishing && !canFightFishing) { 
                         	//스페이스바를 누르면 낚시 시작
                             isFishing = true;
                             $("#down-img").attr("src", "resources/img/fishing.png");
@@ -410,7 +421,7 @@
                                     height: "10%",
                                     opacity: 1
                                 }, 200, function() {
-                                    $("#status").html("<h3><span class='space-bar'>Enter ⏎ </span>누르면 캐스팅 시작</h3>");
+                                    $("#status").html("<h3><span class='Enter'>Enter ⏎ </span>누르면 캐스팅 시작</h3>");
                                     $(this).stop().animate({
                                         width: "50px",
                                         height: "50px",
@@ -436,11 +447,38 @@
                                                 gagePercent = 30; //캐스팅 게이지 초기화
                                                 if (intervalId === null) {
                                                     intervalId = setInterval(function() {
-                                                        if (gagePercent > 0) { //지속적으로 게이지 5씩 감소
-                                                            gagePercent -= 5; 
+                                                      
+                                                    	if (gagePercent > 0) { //지속적으로 게이지 5씩 감소
+                                                            gagePercent -= 8; 
                                                             $("#gage").animate({
                                                                 width: gagePercent + "%" 
                                                             }, 300);
+                                                            
+                                                            $("#gage-img").animate({
+                                                                marginLeft: gagePercent + "%" // 게이지 길이에 맞춰 그림자 이동
+                                                            }, 300)
+                                                            if (gagePercent > 70) {
+                                                                $("#gage").css("background-color", "green"); 
+                                                                $("#gage-section").html("");
+                                                           
+                                                                $("#gage-section").append("❤️"); 
+                                          
+                                                            }else if (gagePercent > 30) {
+                                                                $("#gage").css("background-color", "yellow"); 
+                                                                $("#gage-section").html("");
+                                                                $("#gage-section").append("⚠️"); 
+                                                          
+                                                            }else if (gagePercent <= 30) {
+                                                                $("#gage").css("background-color", "red"); 
+                                                                $("#gage-section").html("");
+                                                                $("#gage-section").append("🩹"); 
+                                                          
+                                                            }
+
+
+
+                                                           
+                                                        
                                                         }
                                                         
                                                         
@@ -490,7 +528,7 @@
                                                                     $.each(zxc.fish, function(i, f) {
                                                                         let randomNumber = Math.floor(Math.random() * (70 - 30 + 1)) + 30;
                                                                         $("#status").css("background-image", "url('resources/img/background/status.png')");
-                                                                        $("#status").html("<h3>" + "<span class='blue'>" + f.f_name + "</span>" + "획득!" + " 💰<span class = 'gold'>" + Math.floor(f.f_price * (randomNumber / 30)) + "</span>" + " 크기 : " + randomNumber + "</h3>");
+                                                                        $("#status").html("<h3>" + "<span class='Enter'>" + f.f_name + "</span>" + "획득!" + " 💰<span class = 'gold'>" + Math.floor(f.f_price * (randomNumber / 30)) + "</span>" + " 크기 : " + randomNumber + "</h3>");
                                                                         
                                                                 
                                                                         $.ajax({
@@ -499,8 +537,10 @@
                                                                             data: { f_name: f.f_name, f_price: f.f_price, f_size: randomNumber },
                                                                             success: function(response) {
                                                                                 console.log("Insert Inventory 성공:", response);
-                                                                                
-                                                                            
+                                                                                $("#fish-list").append(
+                                                                                	    "<img id='catched-fish-" + f.f_name + randomNumber+ "' class='catched-fish' src='resources/img/Fish/" + f.f_name + ".png' onclick='showInfo(\"" + f.f_name + "\", \"" + f.f_price + "\", \"" + randomNumber + "\", event)' />"
+                                                                                	); 
+                                                                                $("#catched-fish-" + f.f_name + randomNumber).css("border", "none");
                                                                                 $.ajax({
                                                                                     url: '/game/getAllInventory', 
                                                                                     type: 'GET',
@@ -512,16 +552,18 @@
                                                                                         $(".catched-fish").css("border", "none");
 
                                                                                         //인벤토리에 id값이 각자 다른 물고기의 이미지를 추가
-                                                                                        $("#fish-list").append(
-                                                                                        	    "<img id='catched-fish-" + f.f_name + randomNumber+ "' class='catched-fish' src='resources/img/Fish/" + f.f_name + ".png' onclick='showInfo(\"" + f.f_name + "\", \"" + f.f_price + "\", \"" + randomNumber + "\", event)' />"
-                                                                                        	);
+                                                                                 
 
 
                                                                                         console.log("추가된 이미지:", '#catched-fish-' + f.f_name + randomNumber); 
 
-                                                                                        $("#catched-fish-" + f.f_name).css("border", "yellow 2px solid");
+                                                                                        $("#catched-fish-" + f.f_name + randomNumber).css("border", "yellow 2px solid");
                                                                                         $("#catched-fish-" + f.f_name + randomNumber).css("width", randomNumber + "px");
                                                                                         $("#catched-fish-" + f.f_name + randomNumber).css("height", randomNumber + "px");
+                                                                                        $("#catched-fish-" + f.f_name + randomNumber + ":hover").css("cursor", "pointer");
+                                                                                        
+                                                                                        
+                                                                                        
                                                                                     },
                                                                                     error: function(xhr, status, error) {
                                                                                         console.error("인벤토리 목록 갱신 실패", error);
@@ -625,7 +667,7 @@
                 if (e.keyCode === 67) {  //C키
                 	let randomColor = Math.floor(Math.random() * 12) + 1;
                 	$("#status").css("background-image", "none");
-                
+                   	$("#status").css("border", "none");
                 	if(randomColor === 1){
                 		$("#status").css("background-color", "#D3F1DF");
                 	}else if(randomColor === 2){
@@ -664,8 +706,25 @@
                 if (e.keyCode === 90) {  //Z키
                     $("#status").css("background-image", "url('resources/img/background/status.png')");
                 }
-                
-                
+ 
+                 if (event.keyCode === 78) { // N키 
+                	
+                	  $("body").css("filter", "brightness(85%)");
+                	  $("body").css("background-image", "url('resources/img/background/lake_night.jpg')");
+                	  $("body").css("background-color", "black");
+
+                	  $("body").css("background-size", "cover");
+         } 
+                 if (event.keyCode === 77) { // M키 
+                 	
+               	  $("body").css("filter", "brightness(100%)");
+
+               	  $("body").css("background-image", "url('resources/img/background/lake.jpg')");
+               	  $("body").css("background-color", "none");
+
+               	     
+        }
+
                 
                 
             });
@@ -686,11 +745,18 @@
 <div class="price" id="price"></div>
 <div class="fight-fishing" id="fight-fishing">
     <div class="gage" id="gage">
-        <div id="fight-fishing-dmg">     </div>
+        <img src = "resources/img/Fish/shadow.png" width = "80" height = "40" id = "gage-img">
+      
+        <div id="fight-fishing-dmg">     
+        
+        </div>
     </div>
+  
     <img id="akey" src="resources/img/akey.png"> 
-    <img id="skey" src="resources/img/skey.png">
-    
+    <img id="skey" src="resources/img/skey.png">  
+  <div id = "gage-section">
+       
+        </div>
 </div>
 <div class="right-bar">
     <div class="inventory-menu" onclick="toggleInventory()">🎣 <br>인벤토리<strong>[E]</strong></div>
@@ -700,54 +766,33 @@
                    <div class="inventory-menu" onclick="toggleRecovery()">↩️‍ <br>상태창 복구<strong>[Z]</strong></div>
                    <div class="inventory-menu" onclick="toggleBlack()">⚫<br>글자 색상<strong>[T]</strong></div>
                    <div class="inventory-menu" onclick="toggleWhite()">⚪<br>글자 색상<strong>[W]</strong></div>
+                     <div class="inventory-menu" onclick="toggleMorning()">🌞<br>모닝 모드<strong>[M]</strong></div>
+                     <div class="inventory-menu" onclick="toggleNight()">🌙<br>나이트 모드<strong>[N]</strong></div>
+                     
 </div>
 
 <div id="inventory" class="inventory" style="display:none;">
-    <table class="inventory-tbl" id="inventory-tbl">
-        <tr><th><h2>Inventory 🎒</h2></th></tr>
-        <c:set var="itemsPerRow" value="4" /> 
-        <c:set var="itemCount" value="0" /> 
+    <h2>Inventory 🎒</h2>
 
-        <tr>
-            <c:forEach var="f" items="${inventoryList}">
-                <c:set var="count" value="${inventoryCount[f.f_name] != null ? inventoryCount[f.f_name] : 0}" />
-           
-                <c:if test="${itemCount % itemsPerRow == 0 && itemCount > 0}">
-                    </tr>
-                    
-                    
-                    <tr> 
-                </c:if>
-          <td class='" + "catched" + "' id = "fish-list">
-   <div id = "fish-img">
-  <img class="fish-img" id="fish-img-${f.f_name}${f.f_size}" 
-    src="resources/img/Fish/${f.f_name}.png" 
-    style="width: ${f.f_size}px; height: ${f.f_size}px"
-    onclick="showInfo('${f.f_name}', '${f.f_price}', '${f.f_size}', event)" />
-
-        </div> 
-         
-
-</td>
+   
+    <div class="fish-list" id="fish-list">
+        <c:forEach var="f" items="${inventoryList}">
+            <div class="fish-item">
+                <img class="fish-img" id="fish-img-${f.f_name}${f.f_size}" 
+                     src="resources/img/Fish/${f.f_name}.png" 
+                     style="width: ${f.f_size}px; height: ${f.f_size}px"
+                     onclick="showInfo('${f.f_name}', '${f.f_price}', '${f.f_size}', event)" />
+            </div>
+        </c:forEach>
+    </div>
 
 
-                <td id = "added-td">
-       
-                </td>
-                <c:set var="itemCount" value="${itemCount + 1}" /> 
-            </c:forEach>
-            <div id = "add"></div>
-            
-        </tr>
-        <tr>
-        <td id = "userMoney">
-        
-        </td>
-        <td id = "sell-button">
-        </td>
-        </tr>
-    </table>
+    <div class="inventory-footer">
+        <div id="userMoney"></div>
+        <div id="sell-button"></div>
+    </div>
 </div>
+
 <div id="UserInfo" class="UserInfo" style="display:none;">
 <table id = "UserInfoTbl" class = "UserInfoTbl">
 <tr><img src = "resources/img/down.png" width = "90px" height = "110px" class = "Profile"></tr>

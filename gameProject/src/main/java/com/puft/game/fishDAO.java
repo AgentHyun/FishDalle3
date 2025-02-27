@@ -9,9 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-
-
-
 @Service
 public class fishDAO {
 
@@ -31,8 +28,6 @@ public class fishDAO {
 		
 		
 	}
-	
-	
 	
 	public Fishes getJSON(HttpServletRequest req) {
 		   return new Fishes(ss.getMapper(FishMapper.class).getAllFish());

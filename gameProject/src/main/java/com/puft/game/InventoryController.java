@@ -46,11 +46,6 @@ public class InventoryController {
         	iDAO.sellFish(f_name, f_price, f_size); 
         	fDAO.getAllFish(req);
         	iDAO.selectAllInventory(req);
-        	 
-
-            
-              
-            
             
         } catch (Exception e) {
             e.printStackTrace();

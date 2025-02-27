@@ -9,9 +9,7 @@ public class Fish {
 	private String f_name;
    private int f_price;
    
-   
    public Fish() {
-	// TODO Auto-generated constructor stub
 }
 
 

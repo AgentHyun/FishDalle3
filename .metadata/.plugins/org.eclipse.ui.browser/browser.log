@@ -416,3 +416,5 @@
 2월 27, 2025 09:05:05.78 [4132:7996:0227/090505.787:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 27, 2025 09:08:57.34 [4132:7996:0227/090857.345:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
 2월 27, 2025 09:15:47.16 [4132:7996:0227/091547.163:ERROR:registration_request.cc(291)] Registration response error message: DEPRECATED_ENDPOINT
+2월 27, 2025 09:58:57.72 [4132:8464:0227/095857.726:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context
+2월 27, 2025 11:23:24.03 [4132:8464:0227/112324.032:ERROR:new_tab_page_handler.cc(1306)] NewTabPage loaded into a non-browser-tab context

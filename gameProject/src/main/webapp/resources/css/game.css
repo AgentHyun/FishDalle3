@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-    background-image: url('../img/lake.jpg');
+    background-image: url('../img/background/lake.jpg');
     background-size: cover;
     margin: 0;
     height: 100vh;
@@ -22,7 +22,7 @@ body {
     position: absolute;
     background-color: white;
     margin-left: 100px;
-    height: 90px;
+    height: 150px;
     width: 650px;
     top: 50%;
     left: 50%;
@@ -33,11 +33,13 @@ body {
 }
 
 .gage {
+	font-size : 20pt;
     margin-left: 5px;
     height: 30px;
     width: 45px;
     background-color: #B1F0F7;
     transition: height 0.1s ease;
+    color : white;
 }
 
 #akey, #skey {
@@ -79,7 +81,8 @@ body {
 .fishing-section {
     position: absolute;
     top: 100px;
-    left: 300px;
+    
+    left: 200px;
     width: 300px;
     height: 400px;
     background-color: transparent;
@@ -95,7 +98,9 @@ body {
 .space-bar {
     color: #B7B7B7;
 }
-
+.Enter {
+    color: #000957;
+}
 .status {
     width: 80%;
     height: 150px;
@@ -108,8 +113,8 @@ body {
 
 }
 .blue{
-	color : #578FCA;
-font-size : 35pt;
+	color : #001A6E;
+font-size : 20pt;
 	font-weight: 200;
 	
 }
@@ -118,6 +123,12 @@ font-size : 35pt;
 	font-weight: 200;
 	color : #A04747;
 }
+#catched-text{
+	
+	border : 2px solid #001A6E; 
+	
+}
+
 .fish-typing {
 
     font-size: 2rem;
@@ -368,11 +379,11 @@ opacity : 0.5;
 .mustard{
 	color : #FCC737;
 }
-.catched-fish{
-	
-	border : 2px #FFEB00 solid;
-	
-	
+.catched-fish {
+    width: 100px; 
+    height: auto;
+    flex: 1 1 calc(25% - 10px);
+    max-width: 100px;
 }
 
 .inventory-tbl td {
@@ -381,6 +392,41 @@ opacity : 0.5;
     justify-content: center;
     align-items: center;
     border : none;
+}
+
+
+
+.fish-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-around;
+    padding: 10px;
+}
+
+
+.fish-item {
+    flex: 1 1 calc(25% - 10px); /* 한 줄에 4개씩 */
+    max-width: calc(25% - 10px);
+    text-align: center;
+}
+
+
+.fish-img {
+    border: 2px solid transparent;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.fish-img:hover {
+    border: 2px solid #D9EAFD;
+}
+
+
+.inventory-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 .fish-img {
@@ -393,10 +439,10 @@ opacity : 0.5;
     cursor: pointer;
     opacity: 0.7;
 }
-.catched-fish{
-	border-style: none;
-	
+.catched-fish:hover {
+    cursor: pointer;
 }
+
 
 
 

@@ -13,7 +13,7 @@ insert into GAMEFISH values(g_seq.NEXTVAL,'학꽁치', 300);
 insert into GAMEFISH values(g_seq.NEXTVAL,'흰동가리', 1000);
 insert into GAMEFISH values(g_seq.NEXTVAL,'복어', 2500);
 insert into GAMEFISH values(g_seq.NEXTVAL,'문어', 2000);
-insert into GAMEFISH values(g_seq.NEXTVAL,'꽃게', 4500);
+insert into GAMEFISH values(g_seq.NEXTVAL,'꽃게', 2000);
 insert into GAMEFISH values(g_seq.NEXTVAL,'새우', 500);
 insert into GAMEFISH values(g_seq.NEXTVAL,'도미', 3000);
 insert into GAMEFISH values(g_seq.NEXTVAL,'참치', 3500);

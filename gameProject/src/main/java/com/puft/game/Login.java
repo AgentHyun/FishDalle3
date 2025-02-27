@@ -1,12 +1,10 @@
 package com.puft.game;
 
 public class Login {
-
 	
 	private String u_id;
 	private String u_pw;
 	public Login() {
-		// TODO Auto-generated constructor stub
 	}
 	public Login(String u_id, String u_pw) {
 		super();

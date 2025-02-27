@@ -7,7 +7,6 @@ public class Fishes {
   
   
   public Fishes() {
-	// TODO Auto-generated constructor stub
 }
 
 

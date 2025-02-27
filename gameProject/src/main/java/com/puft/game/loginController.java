@@ -12,13 +12,13 @@ public class LoginController {
 	
 	@Autowired
 	LoginDAO lDAO;
+	
 	@Autowired
 	fishDAO fDAO;
+	
 	@Autowired
 	InventoryDAO iDAO;
 
-	
-	
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String Login(Login l, HttpServletRequest req) {
 		lDAO.login(l, req);
