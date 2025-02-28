@@ -35,6 +35,14 @@
     	  $("#status").css("background-image", "url('resources/img/background/status.png')");
     	  
       }  
+      
+     function toggleHelp(){
+    	 
+    	 $("#Help").fadeToggle(500); 
+     }
+      
+      
+      
       function toggleBlack(){
     	  
     	  $("h3").css("color", "black");
@@ -149,9 +157,9 @@
                     //판매 후 메세지 출력
                     $("#status").html(
                     	    "<div class='sell-msg'>" +
-                    	    "<br><img src='resources/img/Fish/" + fishName + ".png' width='30' height='30'>(이)가 판매되었습니다!<br>" +
-             
-                    	    "<div class='sellMoney'><br>💵 " + Math.floor(userMoney) + "</div>" +
+                    	    "<br><img src='resources/img/Fish/" + fishName + ".png' width='30' height='30'>(이)가 판매되었습니다!" +
+            
+                    	    "<div class='sellMoney'>💵 " + Math.floor(userMoney) + "</div>" +
                     	    "</div>"
                     	);
 
@@ -182,8 +190,8 @@
                 $("#shop-money").html("💵 " + userMoney);
                 updateShop(rodName, rodPrice, rodDamage);
                 $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚싯대를 구입했습니다!</h3>");
-                $("#damage-td").html("💪전투력 : " + rodDamage);
-                $("#rod-td").html(rodName + "낚싯대 착용중");
+                $("#damage-td").html("⚔️전투력 : <span class = 'power-value'>" + (rodDamage + 3) + "</span><br><br>");
+                $("#rod-td").html("<div class = 'user-text'><span class = 'sky'>" + rodName + "</span>낚싯대 착용중 </div> ");
             } else {
                 $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉</h3>");
             }
@@ -202,28 +210,13 @@
                 $("#shop-money").html("💵 " + userMoney);
                 updateShop(rodName, rodPrice, rodDamage);
                 $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚싯대를 구입했습니다!</h3>");
-                $("#damage-td").html("💪전투력 : " + rodDamage);
-                $("#rod-td").html(rodName + "낚싯대 착용중");
+                $("#damage-td").html("⚔️전투력 : <span class = 'power-value'>" + (rodDamage + 3) + "</span><br><br>");
+                $("#rod-td").html("<div class = 'user-text'><span class = 'sky'>" + rodName + "</span>낚싯대 착용중 </div> ");
             } else {
                 $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉🙉</h3>");
             }
         }
-        //로또 구입 메소드 가격 : 5000 (0 ~ 10000)까지 랜덤 머니 획득
-        function buyLotto() {
-            if ((userMoney - 5000) >= 0) {
-                userMoney -= 5000;
-            
-                let RandomMoney = Math.floor(Math.random() * (10000 - 0 + 1)) + 1000;
-                userMoney += RandomMoney;
-                $("#userMoney").html("💵 " + userMoney);
-                $("#shop-money").html("💵 " + userMoney);
-                
-                $("#status").html("<h3>럭키비키 😽 <span class='green'>" + RandomMoney + "</span>원을 얻었습니다!</h3>");
-                
-            } else {
-                $("#status").html("<h3><span class='gold'>탕진</span>하신 것 같은데요!?</h3>");
-            }
-        }
+      
 
         function buyAwesome() {
             const rodName = "대단한";
@@ -237,8 +230,8 @@
                 $("#shop-money").html("💵 " + userMoney);
                 updateShop(rodName, rodPrice, rodDamage);
                 $("#status").html("<h3><span class='gold'>" + rodName + "</span> 낚싯대를 구입했습니다! (데미지: " + rodDamage + ")</h3>");
-                $("#damage-td").html("💪전투력 : " + rodDamage);
-                $("#rod-td").html(rodName + "낚싯대 착용중");
+                $("#damage-td").html("⚔️전투력 : <span class = 'power-value'>" + (rodDamage + 3) + "</span><br><br>");
+                $("#rod-td").html("<div class = 'user-text'><span class = 'sky'>" + rodName + "</span>낚싯대 착용중 </div>>");
             } else {
                 $("#status").html("<h3><span class='green'>돈</span>이 부족합니다🙉🙉🙉</h3>");
             }
@@ -256,14 +249,31 @@
             if((userMoney - rodPrice) >= 0){
             	updateShop(rodName, rodPrice, rodDamage);
             	$("#status").html("<h3><span class = 'gold'>"+rodName +"</span> 낚싯대를 구입했습니다!</h3>");
-            	$("#damage-td").html("💪전투력 : " + rodDamage);
-            	$("#rod-td").html(rodName + "낚싯대 착용중");
+            	$("#damage-td").html("⚔️전투력 : <span class = 'power-value'>" + (rodDamage + 3) + "</span><br><br>");
+            	
+            	$("#rod-td").html("<div class = 'user-text'><span class = 'sky'>" + rodName + "</span>낚싯대 착용중 </div> ");
      
                 }else{
                 	$("#status").html("<h3><span class = 'green'>돈</span>이 부족합니다🙉🙉🙉🙉</h3>");
                 }
         }
-
+        
+        //로또 구입 메소드 가격 : 5000 (0 ~ 10000)까지 랜덤 머니 획득
+        function buyLotto() {
+            if ((userMoney - 5000) >= 0) {
+                userMoney -= 5000;
+            
+                let RandomMoney = Math.floor(Math.random() * (10000 - 0 + 1)) + 1000;
+                userMoney += RandomMoney;
+                $("#userMoney").html("💵 " + userMoney);
+                $("#shop-money").html("💵 " + userMoney);
+                
+                $("#status").html("<h3>럭키비키 😽 <span class='green'>" + RandomMoney + "</span>원을 얻었습니다!</h3>");
+                
+            } else {
+                $("#status").html("<h3><span class='gold'>탕진</span>하신 것 같은데요!?</h3>");
+            }
+        }
         //구입 요청 메소드
         function updateShop(rodName,rodPrice, rodDamage) {
 
@@ -282,7 +292,7 @@
                         "<div class='sell-msg'>" +
                         "<img src='resources/img/rod/" + rodName + ".png' width='50px' height='50px'>" + 
                         "<br>" + "<span class = 'blue'>" + rodName+ "</span>" + "낚싯대가 구입되었습니다!<br>" + //css추가
-                        "<br>구매가: " + "<span class = 'red'>" + rodPrice+ "</span>" +
+                        "구매가: " + "<span class = 'red'>" + rodPrice+ "</span>" +
                         "<br><div class='sellMoney'><br>💵 " + Math.floor(userMoney) +
                         "</div>" +
                         "</div>"
@@ -557,11 +567,12 @@
 
                                                                                         console.log("추가된 이미지:", '#catched-fish-' + f.f_name + randomNumber); 
 
-                                                                                        $("#catched-fish-" + f.f_name + randomNumber).css("border", "yellow 2px solid");
+                                                                                        $("#catched-fish-" + f.f_name + randomNumber).css("border", "3px solid #1abc9c"); 
+
                                                                                         $("#catched-fish-" + f.f_name + randomNumber).css("width", randomNumber + "px");
                                                                                         $("#catched-fish-" + f.f_name + randomNumber).css("height", randomNumber + "px");
                                                                                         $("#catched-fish-" + f.f_name + randomNumber + ":hover").css("cursor", "pointer");
-                                                                                        
+                                                                                      
                                                                                         
                                                                                         
                                                                                     },
@@ -635,14 +646,39 @@
             let isUserInfo = false;
             let isShop = false;
             let isColor = false;
-            
+            let isHelp = false;
             
             
             
             //우측 메뉴 단축키 이벤트
             $(document).keydown(function(e) { 
-            	console.log('isShop:', isShop, 'isColor:', isColor);
+            	
 
+            	if (e.key === "1") { // 1키
+            	    isHelp = !isHelp;
+                 $(".help-btn").click(function(){
+            
+                	  $("#Help").fadeOut(500);
+                	  $("#Help-Second").fadeIn(500);
+                	 
+                 });
+                 $(".help-btn-before").click(function(){
+                 	
+               	  $("#Help-Second").fadeOut(500);
+               	  $("#Help").fadeIn(500);
+               	 
+               	 
+                });
+               
+            	
+            	if(isHelp){ 
+            	   $("#Help").fadeToggle(500);
+            	  
+            	}else{
+            		$("#Help-Second").fadeOut(500);
+            	}
+                }
+            	
             	if (e.keyCode === 69) {  //E키
                     isInventory = !isInventory;
                     $("#inventory").fadeToggle(500);
@@ -724,6 +760,7 @@
 
                	     
         }
+                 
 
                 
                 
@@ -741,15 +778,14 @@
 
 <img id="down-img" class="down-img" src="resources/img/down.png" alt="다운 이미지">
 <div class="fishing-section" id = "fishing-section"><h4 id = "fishing-section-h4">낚시 가능 구역</h4></div>
-<div class="status" id="status">           </div>
+
+<div class="status" id="status"><h3> <span class = "power-value">1번</span>을 누르면 도와드릴게요😉  </h3> </div>
 <div class="price" id="price"></div>
 <div class="fight-fishing" id="fight-fishing">
     <div class="gage" id="gage">
-        <img src = "resources/img/Fish/shadow.png" width = "80" height = "40" id = "gage-img">
+        <img src = "resources/img/Fish/shadow.png" width = "80" height = "40" id = "gage-img"> 
       
-        <div id="fight-fishing-dmg">     
-        
-        </div>
+      
     </div>
   
     <img id="akey" src="resources/img/akey.png"> 
@@ -757,8 +793,12 @@
   <div id = "gage-section">
        
         </div>
+          <div id="fight-fishing-dmg">     
+        
+        </div>
 </div>
 <div class="right-bar">
+    <div class="inventory-menu" onclick="toggleHelp()">❓ <br>도움말<strong>[숫자 1]</strong></div>
     <div class="inventory-menu" onclick="toggleInventory()">🎣 <br>인벤토리<strong>[E]</strong></div>
         <div class="inventory-menu" onclick="toggleUserInfo()">🧑‍ <br>유저<strong>[U]</strong></div>
           <div class="inventory-menu" onclick="toggleShop()">🏬‍ <br>상점<strong>[P]</strong></div>
@@ -770,7 +810,36 @@
                      <div class="inventory-menu" onclick="toggleNight()">🌙<br>나이트 모드<strong>[N]</strong></div>
                      
 </div>
+<div id="Help" class="Help" style="display:none;">
+    <h2> 도움말🤔</h2>
+    <div class = "help-text">
+ <img class = "keyboard-help" src = "resources/img/keyboard.png" width = "150" height = "150">  <img class = "fishing-zone-help" src = "resources/img/fishing-zone.png" width = "150" height = "150"> <img class = "casting-help" src = "resources/img/casting.png" width = "80" height = "80">
 
+ <h4>1. <span class = "space-bar">방향키</span>를 눌러 이동하세요        2. 낚시 구역으로 이동해 <span class = "space-bar">Spacebar</span>를 누르세요        3. 입질을 감지하면 <span class = "space-bar">Enter키</span>를 눌러 캐스팅하세요</h4>
+    <div class = "help-btn-section">
+    <button class = "help-btn-before">←</button><button class = "help-btn">→</button>
+    </div>
+    </div>
+ 
+   
+  
+    </div>
+    
+    <div id="Help-Second" class="Help" style="display:none;">
+    <h2> 도움말🤔</h2>
+    <div class = "help-text">
+ <img class = "keyboard-help" src = "resources/img/fish-fighting-help.png" width = "350" height = "80">  <img class = "keyboard-help" src = "resources/img/catching-help.png" width = "350" height = "80"> 
+
+ <h4 class = "help-text">1. <span class = "space-bar">    a키</span> 또는  <span class = "space-bar">s키</span>를 눌러 데미지를 주세요        2. <span class = "gold">100%</span>의 충격을 주면 낚시 성공!        3. <span class = "space-bar">E키</span>를 눌러 인벤토리를 확인하세요     </h4>
+       <h4>💡인벤토리의 🚚를 누르고 물고기를 누르면 판매됩니다.<br><br>💡기본 데미지는 <span class = "space-bar">3</span>이고 물고기는 지속적으로 <span class = "space-bar">8</span>씩 저항합니다  낚시대를 구입해서 데미지를 늘려보세요💥  </h4>
+        <button class = "help-btn-before">←</button><button class = "help-btn">→</button>
+    </div>
+ 
+   
+  
+    </div>
+    
+    
 <div id="inventory" class="inventory" style="display:none;">
     <h2>Inventory 🎒</h2>
 
@@ -802,20 +871,20 @@
 </td>
 
 </tr>
+<tr>
+<td class = "user-td" id = "damage-td">
+
+    ⚔️ 전투력: <span class="power-value">3</span><br><br>
+
+</td>
+</tr>
 
 <tr>
 <td class = "user-td" id = "rod-td">
-    <div class = "user-text">장비 없음💸 </div> <br><br><br><br>
+    <div class = "user-text">장비 없음💸 </div> <br><br>
 </td>
 </tr>
 
-
-
-<tr>
-<td class = "user-td" id = "damage-td">
-   <div class = "user-text"> 전투력 : 0 </div><br><br><br><br>
-</td>
-</tr>
 
 
 </table>

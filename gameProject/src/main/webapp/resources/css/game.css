@@ -95,11 +95,32 @@ body {
     color: black;
 }
 
+
 .space-bar {
     color: #B7B7B7;
 }
 .Enter {
     color: #000957;
+}
+.help-btn{
+	background-color : transparent;
+	margin-left : 30px;
+	color : white;
+	font-size : 20pt;
+	font-weight : 200%;
+	cursor : pointer;
+}
+.help-btn-before{
+	background-color : transparent;
+	margin-left : 300px;
+	color : white;
+	font-size : 20pt;
+	font-weight : 200%;
+	cursor : pointer;
+	
+}
+.help-btn-section{
+	margin-top : 30px;
 }
 .status {
     width: 80%;
@@ -114,14 +135,17 @@ body {
 }
 .blue{
 	color : #001A6E;
-font-size : 20pt;
+font-size : 30pt;
 	font-weight: 200;
 	
 }
 .red{
-	font-size : 30px;
+	font-size : 30pt;
 	font-weight: 200;
 	color : #A04747;
+}
+.sky{
+	color:#A1E3F9;
 }
 #catched-text{
 	
@@ -170,9 +194,7 @@ font-size : 20pt;
 	margin : -25px;
 }
 
-#damage-td{
-	margin-top : 50px;
-}
+
 @keyframes typing {
     0% {
         transform: translateX(-100%);
@@ -216,14 +238,13 @@ h4 {
     display: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
-
-.UserInfo {
-    position: fixed;
+.Help{
+position: fixed;
     left: 50%;
-    top: 50%;
+    top: 45%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 400px;
+    width: 800px;
+    height: 550px;
     background-color: rgba(0, 0, 0, 0.8);
     color: white;
     padding: 20px;
@@ -231,7 +252,36 @@ h4 {
     display: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
+.fishing-zone-help{
+	margin-left : 90px;
+}
+.casting-help{
+	margin-left : 170px;
+}
+.help-text{
+	    white-space: pre;
+}
+.keyboard-help{
+	margin-left : 20px;
+}
 
+.UserInfo {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 450px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+.power-value{
+	color : #F8ED8C;
+}
 
 .Shop{
 	   z-index : 99;
@@ -270,7 +320,7 @@ h4 {
 }
 .UserInfoTbl td {
     text-align: center;
-    margin-top : 60px;
+
     font-size: 30px;
     
 }
@@ -327,7 +377,7 @@ opacity : 0.5;
 }
 .sell-msg{
 	text-align : center;
-	font-size : 15pt;
+	font-size : 30pt;
 	margin-top : -20px;
 }
 .green{
@@ -394,8 +444,17 @@ opacity : 0.5;
     border : none;
 }
 
-
-
+#damage-td{
+	margin-top : -150px;
+}
+#rod-td{
+	margin-top : 100px;
+}
+#fight-fishing-dmg{
+	color : white;
+	font-size : 25pt;
+	
+}
 .fish-list {
     display: flex;
     flex-wrap: wrap;
@@ -425,7 +484,8 @@ opacity : 0.5;
 
 .inventory-footer {
     display: flex;
-    justify-content: space-between;
+    margin-top : 100px;
+    margin-left : 20px;
     padding: 10px;
 }
 
@@ -441,6 +501,7 @@ opacity : 0.5;
 }
 .catched-fish:hover {
     cursor: pointer;
+    opacity : 0.7;
 }
 
 
